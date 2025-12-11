@@ -12,7 +12,13 @@
     "react": "^19.2.1",
     "recharts": "^3.5.1",
     "react-dom": "^19.2.1",
-    "gsap": "^3.14.1"
+    "gsap": "^3.14.1",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.1",
+    "bcryptjs": "^3.0.3",
+    "jsonwebtoken": "^9.0.3",
+    "dotenv": "^17.2.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

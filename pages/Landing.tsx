@@ -239,7 +239,7 @@ const Landing = () => {
                     </div>
                     <div className="relative order-1 lg:order-2 h-[400px] lg:h-[500px] rounded-3xl overflow-hidden group hero-image-container opacity-0 scale-95">
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent z-10"></div>
-                        <img alt="E-waste recycling concept" className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNjN6qDIYYndt9GIYzdQOvzCE49wU339nJmVXVpB4FBC2qVCc1Qv_7hfwNLEZVfnbgGUASClWUXjv3nRb1uXhAafiMl7jFa2iNUbCm3F0SlqDxpAtSilncLTlRuYWVN7hPZE0fLxvgrdfzidrspVhfDURRuYZojCC0diU9L7USzZ7e3a0xI89jOKo8YAcBO_Vp51j472eulRwBYfeaPljsNkPhuyCk71NAkXJAE97LqKJHckq5e-VHY38HSWFJQWtRPnDk7lbk2A"/>
+                        <img alt="Future of recycling technology" className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"/>
                         <div className="absolute bottom-6 left-6 right-6 z-20 bg-[#1E293B]/40 backdrop-blur-xl border border-white/5 p-4 rounded-2xl flex items-center gap-4 animate-float shadow-2xl">
                             <div className="size-14 rounded-full bg-[#34D399]/20 flex items-center justify-center text-[#34D399] ring-1 ring-[#34D399]/30">
                                 <span className="material-symbols-outlined">recycling</span>

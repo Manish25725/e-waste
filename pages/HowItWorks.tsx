@@ -153,7 +153,7 @@ const HowItWorks = () => {
                         {/* Right Image */}
                         <div className="w-full md:w-1/2 md:pl-12 order-3">
                             <div className="aspect-video w-full rounded-xl overflow-hidden bg-background-card border border-border-dark relative group-hover:border-primary/50 transition-colors duration-300">
-                                <div className="absolute inset-0 bg-cover bg-center opacity-60 mix-blend-overlay" style={{ backgroundImage: "url('https://placeholder.pics/svg/300')" }}></div>
+                                <div className="absolute inset-0 bg-cover bg-center opacity-60 mix-blend-overlay" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1748&auto=format&fit=crop')" }}></div>
                                 <div className="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent"></div>
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <div className="bg-primary/20 p-3 rounded-full animate-pulse">

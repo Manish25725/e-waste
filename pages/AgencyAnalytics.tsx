@@ -1,23 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-
-const data = [
-  { name: '1', value: 20 }, { name: '4', value: 25 }, { name: '7', value: 40 }, 
-  { name: '10', value: 48 }, { name: '13', value: 60 }, { name: '16', value: 68 },
-  { name: '19', value: 75 }, { name: '22', value: 90 }, { name: '25', value: 105 }, 
-  { name: '28', value: 115 }
-];
-
-const pieData = [
-  { name: 'Smartphones', value: 35, color: '#34D399' }, // Primary Emerald
-  { name: 'Laptops', value: 25, color: '#3B82F6' },    // Blue
-  { name: 'Batteries', value: 15, color: '#A855F7' },   // Purple
-  { name: 'Appliances', value: 15, color: '#EC4899' },  // Pink
-  { name: 'Cables', value: 10, color: '#F97316' },      // Orange
-];
+import { api, AnalyticsData } from '../services/api';
 
 const AgencyAnalytics = () => {
+  const [data, setData] = useState<AnalyticsData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+        try {
+            const res = await api.getAnalytics();
+            setData(res);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            setLoading(false);
+        }
+    };
+    loadData();
+  }, []);
+
+  if (loading || !data) {
+      return (
+          <Layout title="Agency Analytics Dashboard" subtitle="Key operational metrics for your agency." role="Agency">
+             <div className="flex h-[60vh] items-center justify-center text-text-secondary gap-3">
+                 <span className="material-symbols-outlined animate-spin text-4xl text-primary">progress_activity</span>
+                 <p className="text-lg">Loading analytics...</p>
+             </div>
+          </Layout>
+      );
+  }
+
   return (
     <Layout title="Agency Analytics Dashboard" subtitle="Key operational metrics for your agency." role="Agency">
       {/* Date Filter */}
@@ -29,11 +43,7 @@ const AgencyAnalytics = () => {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        {[
-          { icon: 'scale', title: 'Total E-Waste Collected', value: '1,250 kg', trend: '+15.2%', positive: true },
-          { icon: 'book_online', title: 'Bookings this Month', value: '312', trend: '+8.5%', positive: true },
-          { icon: 'smartphone', title: 'Top Performing Category', value: 'Smartphones', trend: '-2.1%', positive: false },
-        ].map((card, idx) => (
+        {data.kpi.map((card, idx) => (
           <div key={idx} className="bg-background-card border border-border-dark p-6 rounded-xl flex gap-4">
             <div className="h-12 w-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
               <span className="material-symbols-outlined text-3xl">{card.icon}</span>
@@ -57,7 +67,7 @@ const AgencyAnalytics = () => {
           <p className="text-sm text-text-secondary mb-6">Amount of e-waste collected over the last 30 days.</p>
           <div className="h-80 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={data}>
+              <LineChart data={data.charts.trends}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" vertical={false} />
                 <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
                 <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
@@ -78,23 +88,22 @@ const AgencyAnalytics = () => {
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
-                  data={pieData}
+                  data={data.charts.breakdown}
                   innerRadius={80}
                   outerRadius={110}
                   paddingAngle={5}
                   dataKey="value"
                 >
-                  {pieData.map((entry, index) => (
+                  {data.charts.breakdown.map((entry: any, index: number) => (
                     <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
                   ))}
                 </Pie>
                 <Tooltip contentStyle={{ backgroundColor: '#1E293B', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }} />
               </PieChart>
             </ResponsiveContainer>
-             {/* Legend overlay or separate div could go here */}
           </div>
            <div className="flex flex-wrap justify-center gap-3 mt-4">
-              {pieData.map((entry) => (
+              {data.charts.breakdown.map((entry: any) => (
                   <div key={entry.name} className="flex items-center gap-2 text-xs">
                       <div className="w-2 h-2 rounded-full" style={{ backgroundColor: entry.color}}></div>
                       <span className="text-text-secondary">{entry.name}</span>
@@ -121,11 +130,7 @@ const AgencyAnalytics = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-border-dark text-white">
-               {[
-                 { rank: 1, name: 'GreenLeaf Recyclers', waste: 450.5, bookings: 102, score: 95 },
-                 { rank: 2, name: 'EcoCycle Inc. (You)', waste: 312.0, bookings: 88, score: 82, active: true },
-                 { rank: 3, name: 'Re-Tech Solutions', waste: 280.2, bookings: 75, score: 76 },
-               ].map((row) => (
+               {data.leaderboard.map((row) => (
                  <tr key={row.rank} className={row.active ? 'bg-primary/10' : ''}>
                    <td className="px-6 py-4 font-medium">{row.rank}</td>
                    <td className={`px-6 py-4 font-medium ${row.active ? 'text-primary' : ''}`}>{row.name}</td>
