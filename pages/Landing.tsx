@@ -42,26 +42,13 @@ const Landing = () => {
             ease: "expo.out"
         }, "-=1.2");
 
-        // Modes Section Animation
-        gsap.from(".mode-card", {
-            scrollTrigger: {
-                trigger: ".mode-card",
-                start: "top 85%",
-            },
-            y: 60,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power3.out"
-        });
-
         // Category Cards Animation
         gsap.from(".category-card", {
             scrollTrigger: {
                 trigger: "#categories",
-                start: "top 75%",
+                start: "top 80%",
             },
-            y: 60,
+            y: 40,
             opacity: 0,
             duration: 0.8,
             stagger: 0.1,
@@ -133,18 +120,22 @@ const Landing = () => {
     const xPct = (x / rect.width - 0.5);
     const yPct = (y / rect.height - 0.5);
 
-    gsap.to(inner, {
-        rotationY: xPct * 12,
-        rotationX: -yPct * 12,
-        duration: 0.6,
-        ease: "power2.out"
-    });
-    gsap.to(icon, {
-        x: xPct * 20,
-        y: yPct * 20,
-        duration: 0.6,
-        ease: "power2.out"
-    });
+    if (inner) {
+      gsap.to(inner, {
+          rotationY: xPct * 12,
+          rotationX: -yPct * 12,
+          duration: 0.6,
+          ease: "power2.out"
+      });
+    }
+    if (icon) {
+      gsap.to(icon, {
+          x: xPct * 20,
+          y: yPct * 20,
+          duration: 0.6,
+          ease: "power2.out"
+      });
+    }
   };
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -152,18 +143,22 @@ const Landing = () => {
     const inner = card.querySelector('.card-inner');
     const icon = card.querySelector('.icon-wrapper');
 
-    gsap.to(inner, {
-        rotationY: 0,
-        rotationX: 0,
-        duration: 0.8,
-        ease: "elastic.out(1, 0.5)"
-    });
-    gsap.to(icon, {
-        x: 0,
-        y: 0,
-        duration: 0.8,
-        ease: "elastic.out(1, 0.5)"
-    });
+    if (inner) {
+      gsap.to(inner, {
+          rotationY: 0,
+          rotationX: 0,
+          duration: 0.8,
+          ease: "elastic.out(1, 0.5)"
+      });
+    }
+    if (icon) {
+      gsap.to(icon, {
+          x: 0,
+          y: 0,
+          duration: 0.8,
+          ease: "elastic.out(1, 0.5)"
+      });
+    }
   };
 
   return (
@@ -258,7 +253,7 @@ const Landing = () => {
                 </div>
             </div>
 
-            {/* Premium 3-Mode Section */}
+            {/* Premium 3-Mode Section - Fixed Visibility */}
             <div className="w-full max-w-7xl px-4 sm:px-6 relative z-10 mb-32">
                 <div className="text-center mb-16 space-y-4">
                     <h2 className="text-3xl sm:text-4xl font-bold text-white">Tailored Solutions for Everyone</h2>
