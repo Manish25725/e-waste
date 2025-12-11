@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EcoCycle</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script>
       tailwind.config = {
@@ -14,25 +14,37 @@
           extend: {
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
+              display: ['Inter', 'sans-serif'],
             },
             colors: {
               primary: {
-                DEFAULT: '#2bee6c',
-                hover: '#25cf5e',
-                light: '#a0ffc2'
+                DEFAULT: '#34D399', // Emerald 400
+                hover: '#059669',   // Emerald 600
+                light: '#6EE7B7',   // Emerald 300
+                dark: '#059669'     // Emerald 600
               },
               background: {
-                light: '#f6f8f6',
-                dark: '#0a140c', // Deep dark green/black
-                card: '#111e16',
+                light: '#F1F5F9',   // Slate 100
+                dark: '#0B1120',    // Slate 950 (Deep Blue/Black)
+                card: '#1E293B',    // Slate 800
+              },
+              surface: {
+                light: '#FFFFFF',
+                dark: '#1E293B',
               },
               border: {
-                dark: '#22382b',
+                dark: 'rgba(255, 255, 255, 0.1)',
               },
               text: {
-                primary: '#e0f0e3',
-                secondary: '#8a9f90',
+                primary: '#F1F5F9', // Slate 100
+                secondary: '#94a3b8', // Slate 400
+              },
+              accent: {
+                blue: '#3B82F6',
               }
+            },
+            backgroundImage: {
+               'hero-pattern': "url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%2334D399\\' fill-opacity=\\'0.03\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
             }
           }
         }
@@ -46,8 +58,8 @@
         font-variation-settings: 'FILL' 1;
       }
       body {
-        background-color: #0a140c;
-        color: #e0f0e3;
+        background-color: #0B1120;
+        color: #F1F5F9;
       }
       /* Scrollbar styling */
       ::-webkit-scrollbar {
@@ -55,14 +67,42 @@
         height: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #0a140c; 
+        background: #0B1120; 
       }
       ::-webkit-scrollbar-thumb {
-        background: #22382b; 
+        background: #1E293B; 
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #2bee6c; 
+        background: #34D399; 
+      }
+      /* Custom utility classes for Landing Page 3D effects */
+      .perspective-container {
+        perspective: 1000px;
+      }
+      .preserve-3d {
+        transform-style: preserve-3d;
+      }
+      .backface-hidden {
+        backface-visibility: hidden;
+      }
+      .icon-glow {
+        filter: drop-shadow(0 0 15px rgba(52, 211, 153, 0.3));
+      }
+      .animate-gradient-xy {
+        background-size: 200% 200%;
+        animation: gradient-xy 6s ease infinite;
+      }
+      @keyframes gradient-xy {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
       }
     </style>
   <script type="importmap">
@@ -71,7 +111,10 @@
     "react/": "https://esm.sh/react@^19.2.1/",
     "react": "https://esm.sh/react@^19.2.1",
     "recharts": "https://esm.sh/recharts@^3.5.1",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.1/"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
+    "gsap": "https://esm.sh/gsap@3.12.2",
+    "gsap/ScrollTrigger": "https://esm.sh/gsap@3.12.2/ScrollTrigger",
+    "gsap/": "https://esm.sh/gsap@^3.14.1/"
   }
 }
 </script>

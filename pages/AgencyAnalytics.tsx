@@ -10,11 +10,11 @@ const data = [
 ];
 
 const pieData = [
-  { name: 'Smartphones', value: 35, color: '#4ade80' },
-  { name: 'Laptops', value: 25, color: '#3b82f6' },
-  { name: 'Batteries', value: 15, color: '#a855f7' },
-  { name: 'Appliances', value: 15, color: '#ec4899' },
-  { name: 'Cables', value: 10, color: '#f97316' },
+  { name: 'Smartphones', value: 35, color: '#34D399' }, // Primary Emerald
+  { name: 'Laptops', value: 25, color: '#3B82F6' },    // Blue
+  { name: 'Batteries', value: 15, color: '#A855F7' },   // Purple
+  { name: 'Appliances', value: 15, color: '#EC4899' },  // Pink
+  { name: 'Cables', value: 10, color: '#F97316' },      // Orange
 ];
 
 const AgencyAnalytics = () => {
@@ -58,14 +58,14 @@ const AgencyAnalytics = () => {
           <div className="h-80 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={data}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#22382b" vertical={false} />
-                <XAxis dataKey="name" stroke="#8a9f90" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="#8a9f90" fontSize={12} tickLine={false} axisLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" vertical={false} />
+                <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
+                <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#111e16', borderColor: '#22382b', borderRadius: '8px' }}
+                  contentStyle={{ backgroundColor: '#1E293B', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
                   itemStyle={{ color: '#fff' }}
                 />
-                <Line type="monotone" dataKey="value" stroke="#2bee6c" strokeWidth={3} dot={false} activeDot={{ r: 6, fill: '#2bee6c' }} />
+                <Line type="monotone" dataKey="value" stroke="#34D399" strokeWidth={3} dot={false} activeDot={{ r: 6, fill: '#34D399' }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -88,7 +88,7 @@ const AgencyAnalytics = () => {
                     <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
                   ))}
                 </Pie>
-                <Tooltip contentStyle={{ backgroundColor: '#111e16', borderColor: '#22382b', borderRadius: '8px' }} />
+                <Tooltip contentStyle={{ backgroundColor: '#1E293B', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }} />
               </PieChart>
             </ResponsiveContainer>
              {/* Legend overlay or separate div could go here */}
