@@ -420,60 +420,6 @@ const Landing = () => {
                 </div>
             </div>
 
-            {/* Team Section */}
-            <section className="w-full max-w-7xl px-4 py-16 md:px-10">
-                <div className="flex flex-col gap-4 mb-10">
-                    <h2 className="text-3xl font-bold text-white md:text-4xl tracking-tight">Meet the Eco-Warriors</h2>
-                    <p className="text-slate-400 max-w-2xl">The diverse team of environmentalists, engineers, and strategists working behind the scenes.</p>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {/* Member 1 */}
-                    <div className="group relative overflow-hidden rounded-2xl bg-[#1E293B] border border-white/5">
-                        <div className="aspect-[4/5] w-full bg-slate-800">
-                            <img alt="Portrait of James Carter, CEO" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGgTCckYVGpYGNvrY1q371qxcBYHMq9K93GTXQiNpiIue3_bOHdHWYWcs8k7zJ8XkVazmiccRBRy7y74-57B4MVAKSvUBd_ZqnYNMKhe9OyGhwjV-S9YEqTOd3Qt_OUjygg8r4fFqRmadxwfH9Z1rffoc7dtlX-ZiaUDPulRVDXrDjMooXPFPigWcCgOnKjHpmtqvxtvnCFMCbfV6lOvWY3DPMTllCZt3mx_rPRVMY6uo-dr4tMOjfq3zhSWXmNcRVbb6Wuf0H5Nk"/>
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent opacity-90"></div>
-                        <div className="absolute bottom-0 p-4 w-full">
-                            <h3 className="text-lg font-bold text-white">James Carter</h3>
-                            <p className="text-[#34D399] text-sm font-medium">Founder & CEO</p>
-                        </div>
-                    </div>
-                    {/* Member 2 */}
-                    <div className="group relative overflow-hidden rounded-2xl bg-[#1E293B] border border-white/5">
-                        <div className="aspect-[4/5] w-full bg-slate-800">
-                            <img alt="Portrait of Sarah Chen, CTO" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5MLRbZQ0gSkFjhap3C6bfnHwXvn4JvuF6ss6f0yWmf4EwIVFc4a3rPSqzhN7i35KYavUxLv2TGbQ0DDUpoORoEIf0nrHu0MIsJGyS9uHCSZjo_oeM1gyEXxKb3fbFOSK8xvcd0hTzp8PCdSZL82ZlgYpnJlIiSTHnnrqMrruJ3jul78QOWK69tU3pOEpU2wx0xkbTtHOh1revLlJYGrGnMtGvDzt0TGWA-JQMemBuevlPYOj-lhisiYpiiGbLA0fafNfQa3Qkrqw"/>
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent opacity-90"></div>
-                        <div className="absolute bottom-0 p-4 w-full">
-                            <h3 className="text-lg font-bold text-white">Sarah Chen</h3>
-                            <p className="text-[#34D399] text-sm font-medium">Chief Technology Officer</p>
-                        </div>
-                    </div>
-                    {/* Member 3 */}
-                    <div className="group relative overflow-hidden rounded-2xl bg-[#1E293B] border border-white/5">
-                        <div className="aspect-[4/5] w-full bg-slate-800">
-                            <img alt="Portrait of Marcus Johnson, Head of Operations" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdzPXX7qiTFwXug2YK1NVDymqMxFHFG24SraLeMywUWNZxFpnYg8U5IvNsP2uKN7dd5-rL5op8jR3-9tSQCbDRWCc4U9u5iK6LnwhpWsKOxsXQdjWKyR6pF6DYjhC5I4UD9oBeau8YEwJpsWlcO6aP7_15fbtbuZ4PYIqgfptR1bWJPMOADu1gm8C2xeQdhoeDmEMVxNMJuL0Oshjckl_zQkjKc6YkwZxVNBf0wENk6wC38wxZcyIjTAUKDXxBZbXlqUWFaU2-eT4"/>
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent opacity-90"></div>
-                        <div className="absolute bottom-0 p-4 w-full">
-                            <h3 className="text-lg font-bold text-white">Marcus Johnson</h3>
-                            <p className="text-[#34D399] text-sm font-medium">Head of Operations</p>
-                        </div>
-                    </div>
-                    {/* Member 4 */}
-                    <div className="group relative overflow-hidden rounded-2xl bg-[#1E293B] border border-white/5">
-                        <div className="aspect-[4/5] w-full bg-slate-800">
-                            <img alt="Portrait of Emily Davis, Sustainability Lead" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3JWfndAXP1p4SeqYC8loBDfme96P8XyUrmKLCJEemRqvfWvZj8IVXtyugQ3RoR7o2OWv9HdoTNAcpBnqu8TVaOJMf1ZyVwCa7u9tsEa1vhSh9fl9nj6RQkPf0xxUzOYXE5zaQDAlnkSF2pM5m0Z3lnE2ziJrrhwe0WQqOV_EbCp_UJRmS1pgLpDKwtYuH0IlSEiCqUrHZ5yout9ILN1ZNBdRCXyveCJWx_3f6tWJMRC8zwzLm1de_8zpBB46uroNK8tKRinB8h1Y"/>
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent opacity-90"></div>
-                        <div className="absolute bottom-0 p-4 w-full">
-                            <h3 className="text-lg font-bold text-white">Emily Davis</h3>
-                            <p className="text-[#34D399] text-sm font-medium">Sustainability Lead</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* Contact Us Section */}
             <section className="w-full max-w-7xl px-4 py-10 md:px-10">
                 <div className="rounded-[2.5rem] bg-gradient-to-r from-[#1E293B] to-[#0B1120] border border-white/5 p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden relative group shadow-2xl">

@@ -3,20 +3,45 @@ import React from 'react';
 const AboutUs = () => {
   return (
     <div className="relative flex min-h-screen flex-col bg-[#0B1120] font-sans text-slate-300 antialiased overflow-x-hidden selection:bg-[#34D399] selection:text-[#0B1120]">
-        {/* Header - Logo Only */}
-        <header className="sticky top-0 z-50 flex items-center justify-center border-b border-white/5 bg-[#0B1120]/80 backdrop-blur-md px-6 py-4">
-            <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.location.hash = '#/'}>
-                <div className="size-8 text-[#34D399] flex items-center justify-center">
-                    <svg className="w-full h-full drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"></path>
-                    </svg>
-                </div>
-                <h2 className="text-white text-xl font-black tracking-tight">EcoCycle</h2>
+        {/* Full Navbar */}
+        <div className="w-full flex justify-center fixed top-0 left-0 right-0 z-50">
+            <div className="absolute inset-0 bg-[#0B1120]/80 backdrop-blur-md border-b border-white/5"></div>
+            <div className="w-full max-w-7xl px-4 sm:px-6 relative z-10">
+                <header className="flex items-center justify-between h-16 sm:h-20">
+                    <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.location.hash = '#/'}>
+                        <div className="size-8 sm:size-10 text-[#34D399] flex items-center justify-center">
+                            <svg className="w-full h-full drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"></path>
+                            </svg>
+                        </div>
+                        <span className="text-slate-50 text-xl sm:text-2xl font-black tracking-tight">EcoCycle</span>
+                    </div>
+                    <nav className="hidden md:flex items-center gap-8">
+                        <button className="text-slate-400 hover:text-[#34D399] text-sm font-medium transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/how-it-works'}>How It Works</button>
+                        <button className="text-slate-400 hover:text-[#34D399] text-sm font-medium transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/search'}>Services</button>
+                        <button className="text-[#34D399] text-sm font-medium transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/about'}>About Us</button>
+                        <button className="text-slate-400 hover:text-[#34D399] text-sm font-medium transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/contact'}>Contact</button>
+                    </nav>
+                    <div className="flex items-center gap-4">
+                        <button 
+                            onClick={() => window.location.hash = '#/login'}
+                            className="hidden sm:flex h-10 px-5 items-center justify-center rounded-full bg-white/5 text-white hover:bg-white/10 border border-white/10 text-sm font-bold transition-all duration-300 cursor-pointer"
+                        >
+                            Log In
+                        </button>
+                        <button 
+                            onClick={() => window.location.hash = '#/search'}
+                            className="h-10 px-6 flex items-center justify-center rounded-full bg-[#34D399] text-slate-900 hover:bg-[#6EE7B7] shadow-[0_0_15px_rgba(52,211,153,0.3)] hover:shadow-[0_0_25px_rgba(52,211,153,0.5)] text-sm font-bold transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                        >
+                            Get Started
+                        </button>
+                    </div>
+                </header>
             </div>
-        </header>
+        </div>
 
         {/* Main Content */}
-        <main className="flex-grow flex flex-col items-center">
+        <main className="flex-grow flex flex-col items-center pt-24 sm:pt-32">
             {/* Hero Section */}
             <section className="w-full max-w-7xl px-4 py-12 md:px-10 md:py-20">
                 <div className="relative overflow-hidden rounded-3xl bg-[#1E293B]/50 border border-white/5 shadow-2xl">
@@ -35,10 +60,10 @@ const AboutUs = () => {
                             </p>
                         </div>
                         <div className="flex gap-4 pt-4">
-                            <button onClick={() => window.location.hash = '#/search'} className="flex h-12 items-center justify-center rounded-full bg-[#34D399] px-8 text-[#0B1120] text-base font-bold transition-transform hover:scale-105 shadow-[0_0_15px_rgba(52,211,153,0.3)]">
+                            <button onClick={() => window.location.hash = '#/search'} className="flex h-12 items-center justify-center rounded-full bg-[#34D399] px-8 text-[#0B1120] text-base font-bold transition-transform hover:scale-105 shadow-[0_0_15px_rgba(52,211,153,0.3)] cursor-pointer">
                                 Join the Movement
                             </button>
-                            <button className="flex h-12 items-center justify-center rounded-full border border-white/10 bg-white/5 px-8 text-white text-base font-bold backdrop-blur-sm transition-colors hover:bg-white/10">
+                            <button className="flex h-12 items-center justify-center rounded-full border border-white/10 bg-white/5 px-8 text-white text-base font-bold backdrop-blur-sm transition-colors hover:bg-white/10 cursor-pointer">
                                 Watch Video
                             </button>
                         </div>
@@ -235,48 +260,47 @@ const AboutUs = () => {
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-white/5 bg-[#0B1120] px-10 py-12">
-            <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:justify-between">
-                <div className="flex flex-col gap-4">
-                    <div className="flex items-center gap-2 text-white">
-                        <div className="size-6 text-[#34D399]">
-                            <svg className="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" stroke="currentColor" strokeWidth="3"></path>
-                            </svg>
+        <footer className="w-full border-t border-white/5 bg-[#0B1120] pt-16 pb-8 relative z-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                    <div className="col-span-1 md:col-span-1">
+                        <div className="flex items-center gap-2 mb-4 cursor-pointer" onClick={() => window.location.hash = '#/'}>
+                            <div className="size-6 text-[#34D399] flex items-center justify-center">
+                                <svg className="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" stroke="currentColor" strokeWidth="3"></path>
+                                </svg>
+                            </div>
+                            <span className="text-white text-lg font-bold">EcoCycle</span>
                         </div>
-                        <h2 className="text-lg font-bold">EcoCycle</h2>
+                        <p className="text-slate-400 text-sm leading-relaxed">Making e-waste recycling accessible, transparent, and rewarding for everyone.</p>
                     </div>
-                    <p className="text-sm text-slate-400 max-w-xs">
-                        Empowering the world to recycle responsibly. Join us in creating a sustainable future.
-                    </p>
+                    <div>
+                        <h4 className="text-white font-bold mb-4">Company</h4>
+                        <ul className="flex flex-col gap-2 text-sm text-slate-400">
+                            <li><button className="hover:text-[#34D399] transition-colors bg-transparent border-none cursor-pointer p-0" onClick={() => window.location.hash = '#/about'}>About</button></li>
+                            <li><button className="hover:text-[#34D399] transition-colors bg-transparent border-none cursor-pointer p-0">Careers</button></li>
+                            <li><button className="hover:text-[#34D399] transition-colors bg-transparent border-none cursor-pointer p-0">Impact</button></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="text-white font-bold mb-4">Resources</h4>
+                        <ul className="flex flex-col gap-2 text-sm text-slate-400">
+                            <li><button className="hover:text-[#34D399] transition-colors bg-transparent border-none cursor-pointer p-0">Help Center</button></li>
+                            <li><button className="hover:text-[#34D399] transition-colors bg-transparent border-none cursor-pointer p-0">Recycling Guide</button></li>
+                            <li><button className="hover:text-[#34D399] transition-colors bg-transparent border-none cursor-pointer p-0" onClick={() => window.location.hash = '#/agency'}>Partner with Us</button></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="text-white font-bold mb-4">Legal</h4>
+                        <ul className="flex flex-col gap-2 text-sm text-slate-400">
+                            <li><button className="hover:text-[#34D399] transition-colors bg-transparent border-none cursor-pointer p-0">Privacy Policy</button></li>
+                            <li><button className="hover:text-[#34D399] transition-colors bg-transparent border-none cursor-pointer p-0">Terms of Service</button></li>
+                            <li><button className="hover:text-[#34D399] transition-colors bg-transparent border-none cursor-pointer p-0">Cookie Policy</button></li>
+                        </ul>
+                    </div>
                 </div>
-                <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
-                    <div className="flex flex-col gap-4">
-                        <h3 className="text-sm font-bold text-white uppercase tracking-wider">Company</h3>
-                        <button className="text-sm text-slate-400 hover:text-[#34D399] text-left bg-transparent border-none cursor-pointer">About</button>
-                        <button className="text-sm text-slate-400 hover:text-[#34D399] text-left bg-transparent border-none cursor-pointer">Careers</button>
-                        <button className="text-sm text-slate-400 hover:text-[#34D399] text-left bg-transparent border-none cursor-pointer">Press</button>
-                    </div>
-                    <div className="flex flex-col gap-4">
-                        <h3 className="text-sm font-bold text-white uppercase tracking-wider">Resources</h3>
-                        <button className="text-sm text-slate-400 hover:text-[#34D399] text-left bg-transparent border-none cursor-pointer">Blog</button>
-                        <button className="text-sm text-slate-400 hover:text-[#34D399] text-left bg-transparent border-none cursor-pointer">Help Center</button>
-                        <button className="text-sm text-slate-400 hover:text-[#34D399] text-left bg-transparent border-none cursor-pointer">Guidelines</button>
-                    </div>
-                    <div className="flex flex-col gap-4">
-                        <h3 className="text-sm font-bold text-white uppercase tracking-wider">Legal</h3>
-                        <button className="text-sm text-slate-400 hover:text-[#34D399] text-left bg-transparent border-none cursor-pointer">Privacy</button>
-                        <button className="text-sm text-slate-400 hover:text-[#34D399] text-left bg-transparent border-none cursor-pointer">Terms</button>
-                        <button className="text-sm text-slate-400 hover:text-[#34D399] text-left bg-transparent border-none cursor-pointer">Security</button>
-                    </div>
-                </div>
-            </div>
-            <div className="mx-auto mt-12 max-w-7xl border-t border-white/5 pt-8 text-center text-sm text-slate-500">
-                © 2024 EcoCycle Inc. All rights reserved.
-            </div>
-        </footer>
-    </div>
-  );
-};
-
-export default AboutUs;
+                <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <p className="text-slate-500 text-sm">© 2024 EcoCycle. All rights reserved.</p>
+                    <div className="flex gap-4">
+                        <button className="text-slate-500 hover:text-white transition-colors bg-transparent border-none cursor-pointer"><span className="sr-only">Twitter</span><svg aria-hidden="true" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></button>
+                        <button className="text-slate-500 hover:text-white transition-colors bg-transparent border-none cursor-pointer"><span className="sr-only">GitHub</span><svg aria-hidden="true" className="h-5 w-5
