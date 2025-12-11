@@ -1,0 +1,149 @@
+import React from 'react';
+import Layout from '../components/Layout';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+
+const data = [
+  { name: '1', value: 20 }, { name: '4', value: 25 }, { name: '7', value: 40 }, 
+  { name: '10', value: 48 }, { name: '13', value: 60 }, { name: '16', value: 68 },
+  { name: '19', value: 75 }, { name: '22', value: 90 }, { name: '25', value: 105 }, 
+  { name: '28', value: 115 }
+];
+
+const pieData = [
+  { name: 'Smartphones', value: 35, color: '#4ade80' },
+  { name: 'Laptops', value: 25, color: '#3b82f6' },
+  { name: 'Batteries', value: 15, color: '#a855f7' },
+  { name: 'Appliances', value: 15, color: '#ec4899' },
+  { name: 'Cables', value: 10, color: '#f97316' },
+];
+
+const AgencyAnalytics = () => {
+  return (
+    <Layout title="Agency Analytics Dashboard" subtitle="Key operational metrics for your agency." role="Agency">
+      {/* Date Filter */}
+      <div className="flex justify-end gap-2 mb-8 -mt-14">
+         <button className="px-4 py-2 rounded-lg bg-background-card border border-border-dark text-sm font-medium hover:bg-white/5">Last 7 Days</button>
+         <button className="px-4 py-2 rounded-lg bg-primary text-background-dark text-sm font-bold">Last 30 Days</button>
+         <button className="px-4 py-2 rounded-lg bg-background-card border border-border-dark text-sm font-medium hover:bg-white/5">Year-to-Date</button>
+      </div>
+
+      {/* KPI Cards */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        {[
+          { icon: 'scale', title: 'Total E-Waste Collected', value: '1,250 kg', trend: '+15.2%', positive: true },
+          { icon: 'book_online', title: 'Bookings this Month', value: '312', trend: '+8.5%', positive: true },
+          { icon: 'smartphone', title: 'Top Performing Category', value: 'Smartphones', trend: '-2.1%', positive: false },
+        ].map((card, idx) => (
+          <div key={idx} className="bg-background-card border border-border-dark p-6 rounded-xl flex gap-4">
+            <div className="h-12 w-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+              <span className="material-symbols-outlined text-3xl">{card.icon}</span>
+            </div>
+            <div>
+              <p className="text-sm text-text-secondary font-medium">{card.title}</p>
+              <p className="text-3xl font-bold text-white mt-1">{card.value}</p>
+              <div className={`flex items-center gap-1 text-sm mt-1 ${card.positive ? 'text-green-500' : 'text-red-500'}`}>
+                <span className="material-symbols-outlined text-sm">{card.positive ? 'arrow_upward' : 'arrow_downward'}</span>
+                <span>{card.trend} vs. last month</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
+        <div className="lg:col-span-3 bg-background-card border border-border-dark p-6 rounded-xl">
+          <h3 className="text-lg font-semibold text-white mb-1">Collection Trends</h3>
+          <p className="text-sm text-text-secondary mb-6">Amount of e-waste collected over the last 30 days.</p>
+          <div className="h-80 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={data}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#22382b" vertical={false} />
+                <XAxis dataKey="name" stroke="#8a9f90" fontSize={12} tickLine={false} axisLine={false} />
+                <YAxis stroke="#8a9f90" fontSize={12} tickLine={false} axisLine={false} />
+                <Tooltip 
+                  contentStyle={{ backgroundColor: '#111e16', borderColor: '#22382b', borderRadius: '8px' }}
+                  itemStyle={{ color: '#fff' }}
+                />
+                <Line type="monotone" dataKey="value" stroke="#2bee6c" strokeWidth={3} dot={false} activeDot={{ r: 6, fill: '#2bee6c' }} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        <div className="lg:col-span-2 bg-background-card border border-border-dark p-6 rounded-xl flex flex-col">
+          <h3 className="text-lg font-semibold text-white mb-1">E-Waste Breakdown</h3>
+          <p className="text-sm text-text-secondary mb-6">Proportion of different categories.</p>
+          <div className="flex-1 min-h-[250px] relative">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={pieData}
+                  innerRadius={80}
+                  outerRadius={110}
+                  paddingAngle={5}
+                  dataKey="value"
+                >
+                  {pieData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
+                  ))}
+                </Pie>
+                <Tooltip contentStyle={{ backgroundColor: '#111e16', borderColor: '#22382b', borderRadius: '8px' }} />
+              </PieChart>
+            </ResponsiveContainer>
+             {/* Legend overlay or separate div could go here */}
+          </div>
+           <div className="flex flex-wrap justify-center gap-3 mt-4">
+              {pieData.map((entry) => (
+                  <div key={entry.name} className="flex items-center gap-2 text-xs">
+                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: entry.color}}></div>
+                      <span className="text-text-secondary">{entry.name}</span>
+                  </div>
+              ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Leaderboard */}
+      <div className="bg-background-card border border-border-dark rounded-xl overflow-hidden">
+        <div className="p-6 border-b border-border-dark">
+          <h3 className="text-lg font-semibold text-white">Agency Performance Leaderboard</h3>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead className="bg-white/5 text-text-secondary font-medium">
+              <tr>
+                <th className="px-6 py-4">Rank</th>
+                <th className="px-6 py-4">Agency</th>
+                <th className="px-6 py-4">Waste Collected (kg)</th>
+                <th className="px-6 py-4">Completed Bookings</th>
+                <th className="px-6 py-4">Performance Score</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border-dark text-white">
+               {[
+                 { rank: 1, name: 'GreenLeaf Recyclers', waste: 450.5, bookings: 102, score: 95 },
+                 { rank: 2, name: 'EcoCycle Inc. (You)', waste: 312.0, bookings: 88, score: 82, active: true },
+                 { rank: 3, name: 'Re-Tech Solutions', waste: 280.2, bookings: 75, score: 76 },
+               ].map((row) => (
+                 <tr key={row.rank} className={row.active ? 'bg-primary/10' : ''}>
+                   <td className="px-6 py-4 font-medium">{row.rank}</td>
+                   <td className={`px-6 py-4 font-medium ${row.active ? 'text-primary' : ''}`}>{row.name}</td>
+                   <td className="px-6 py-4 text-text-secondary">{row.waste}</td>
+                   <td className="px-6 py-4 text-text-secondary">{row.bookings}</td>
+                   <td className="px-6 py-4">
+                     <div className="w-full bg-white/10 rounded-full h-2">
+                       <div className="bg-primary h-2 rounded-full" style={{ width: `${row.score}%` }}></div>
+                     </div>
+                   </td>
+                 </tr>
+               ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default AgencyAnalytics;
