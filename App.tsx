@@ -24,6 +24,10 @@ import AdminAgencies from './pages/AdminAgencies';
 import AdminReports from './pages/AdminReports';
 import PickupConfirmation from './pages/PickupConfirmation';
 import LoadingScreen from './components/LoadingScreen';
+import BusinessInventory from './pages/BusinessInventory';
+import BusinessCertificates from './pages/BusinessCertificates';
+import BusinessDashboard from './pages/BusinessDashboard';
+import BusinessAnalytics from './pages/BusinessAnalytics';
 
 const App = () => {
   const [route, setRoute] = useState(window.location.hash || '#/');
@@ -106,6 +110,14 @@ const App = () => {
         return <Security />;
       case '#/settings':
         return <AppSettings />;
+      case '#/business':
+        return <BusinessDashboard />;
+      case '#/business/inventory':
+        return <BusinessInventory />;
+      case '#/business/certificates':
+        return <BusinessCertificates />;
+      case '#/business/analytics':
+        return <BusinessAnalytics />;
       case '#/':
       default:
         return <Landing />;

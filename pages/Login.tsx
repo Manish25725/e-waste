@@ -10,7 +10,7 @@ const Login = () => {
     if (role === 'partner') {
         window.location.hash = '#/agency';
     } else if (role === 'business') {
-        window.location.hash = '#/dashboard';
+        window.location.hash = '#/business/inventory';
     } else {
         window.location.hash = '#/dashboard';
     }
