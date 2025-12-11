@@ -18,33 +18,33 @@
             },
             colors: {
               primary: {
-                DEFAULT: '#34D399', // Emerald 400
-                hover: '#059669',   // Emerald 600
-                light: '#6EE7B7',   // Emerald 300
-                dark: '#059669'     // Emerald 600
+                DEFAULT: '#13eca4', // New Primary Green
+                hover: '#0fb880',
+                light: '#6fffd1',
+                dark: '#0e9e6e'
               },
               background: {
-                light: '#F1F5F9',   // Slate 100
-                dark: '#0B1120',    // Slate 950 (Deep Blue/Black)
-                card: '#1E293B',    // Slate 800
+                light: '#f6f8f7',   
+                dark: '#0D1A15',    // Deep Green/Black
+                card: '#12251E',    // Dark Green Card
               },
               surface: {
                 light: '#FFFFFF',
-                dark: '#1E293B',
+                dark: '#12251E',
               },
               border: {
-                dark: 'rgba(255, 255, 255, 0.1)',
+                dark: '#2A3C36',
               },
               text: {
-                primary: '#F1F5F9', // Slate 100
-                secondary: '#94a3b8', // Slate 400
+                primary: '#E0E5E3',
+                secondary: '#889992',
               },
               accent: {
                 blue: '#3B82F6',
               }
             },
             backgroundImage: {
-               'hero-pattern': "url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%2334D399\\' fill-opacity=\\'0.03\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+               'hero-pattern': "url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%2313eca4\\' fill-opacity=\\'0.03\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
             }
           }
         }
@@ -58,8 +58,8 @@
         font-variation-settings: 'FILL' 1;
       }
       body {
-        background-color: #0B1120;
-        color: #F1F5F9;
+        background-color: #0D1A15;
+        color: #E0E5E3;
       }
       /* Scrollbar styling */
       ::-webkit-scrollbar {
@@ -67,14 +67,14 @@
         height: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #0B1120; 
+        background: #0D1A15; 
       }
       ::-webkit-scrollbar-thumb {
-        background: #1E293B; 
+        background: #12251E; 
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #34D399; 
+        background: #13eca4; 
       }
       /* Custom utility classes for Landing Page 3D effects */
       .perspective-container {
@@ -87,7 +87,7 @@
         backface-visibility: hidden;
       }
       .icon-glow {
-        filter: drop-shadow(0 0 15px rgba(52, 211, 153, 0.3));
+        filter: drop-shadow(0 0 15px rgba(19, 236, 164, 0.3));
       }
       .animate-gradient-xy {
         background-size: 200% 200%;

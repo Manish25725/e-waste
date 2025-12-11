@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import AgencyAnalytics from './pages/AgencyAnalytics';
 import ManageSlots from './pages/ManageSlots';
+import AgencyBookings from './pages/AgencyBookings';
+import AgencyProfile from './pages/AgencyProfile';
 import UserDashboard from './pages/UserDashboard';
 import Certificate from './pages/Certificate';
 import SearchAgencies from './pages/SearchAgencies';
+import SchedulePickup from './pages/SchedulePickup';
 import AdminDashboard from './pages/AdminDashboard';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
@@ -32,6 +35,10 @@ const App = () => {
         return <AgencyAnalytics />;
       case '#/agency/slots':
         return <ManageSlots />;
+      case '#/agency/bookings':
+        return <AgencyBookings />;
+      case '#/agency/profile':
+        return <AgencyProfile />;
       case '#/dashboard':
         return <UserDashboard />;
       case '#/rewards':
@@ -40,6 +47,8 @@ const App = () => {
         return <Certificate />;
       case '#/search':
         return <SearchAgencies />;
+      case '#/schedule':
+        return <SchedulePickup />;
       case '#/admin':
         return <AdminDashboard />;
       case '#/login':

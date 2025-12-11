@@ -15,7 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title, subtitle, role, fullWi
     { label: 'Dashboard', icon: 'dashboard', path: '#/agency' },
     { label: 'Manage Slots', icon: 'calendar_month', path: '#/agency/slots', active: title === 'Manage Slots' },
     { label: 'Bookings', icon: 'book_online', path: '#/agency/bookings' },
-    { label: 'Reports', icon: 'bar_chart', path: '#/agency/reports' },
+    { label: 'Profile', icon: 'person', path: '#/agency/profile' },
     { label: 'Settings', icon: 'settings', path: '#/agency/settings' },
   ];
 

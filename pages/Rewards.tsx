@@ -3,100 +3,146 @@ import Layout from '../components/Layout';
 
 const Rewards = () => {
   return (
-    <Layout title="Rewards Marketplace" subtitle="Redeem your Eco Points for exciting rewards." role="User">
-      {/* Balance Card */}
-      <div className="bg-gradient-to-r from-green-500 to-emerald-700 rounded-2xl p-8 mb-8 text-white flex flex-col md:flex-row justify-between items-center shadow-lg shadow-green-900/20">
-        <div>
-          <h2 className="text-sm font-medium opacity-90 mb-1">Available Balance</h2>
-          <div className="flex items-baseline gap-2">
-            <span className="text-5xl font-black tracking-tight">1,250</span>
-            <span className="text-xl font-medium">Points</span>
+    <Layout title="" role="User" fullWidth hideSidebar>
+      <div className="bg-[#0B1116] font-sans text-gray-200 antialiased selection:bg-[#10b981] selection:text-white min-h-screen flex flex-col relative overflow-hidden">
+        
+        {/* Background Ambient Blobs */}
+        <div className="fixed top-0 left-0 w-full h-[500px] bg-[#10b981]/5 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none"></div>
+        <div className="fixed bottom-0 right-0 w-full h-[500px] bg-[#3b82f6]/5 rounded-full blur-[120px] translate-y-1/2 pointer-events-none"></div>
+
+        {/* Header */}
+        <header className="flex items-center justify-between whitespace-nowrap border-b border-white/5 px-4 sm:px-6 lg:px-10 py-4 bg-[#0B1116]/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+            <div className="flex items-center gap-3 text-white cursor-pointer" onClick={() => window.location.hash = '#/'}>
+                <div className="p-2 bg-[#10b981]/10 rounded-lg">
+                    <svg className="h-6 w-6 text-[#10b981]" fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"></path>
+                    </svg>
+                </div>
+                <h2 className="text-xl font-bold tracking-tight text-white">EcoCycle</h2>
+            </div>
+            <nav className="hidden md:flex flex-1 justify-center gap-1">
+                <a className="text-sm font-medium px-5 py-2.5 rounded-full text-[#94a3b8] hover:text-white hover:bg-white/5 transition-all cursor-pointer" onClick={() => window.location.hash = '#/dashboard'}>Dashboard</a>
+                <a className="text-sm font-medium px-5 py-2.5 rounded-full text-[#94a3b8] hover:text-white hover:bg-white/5 transition-all cursor-pointer" onClick={() => window.location.hash = '#/search'}>New Request</a>
+                <a className="text-sm font-semibold px-5 py-2.5 rounded-full text-white bg-white/10 shadow-inner border border-white/5 cursor-pointer" onClick={() => window.location.hash = '#/rewards'}>Rewards</a>
+                <a className="text-sm font-medium px-5 py-2.5 rounded-full text-[#94a3b8] hover:text-white hover:bg-white/5 transition-all cursor-pointer" onClick={() => window.location.hash = '#/certificate'}>Certificate</a>
+            </nav>
+            <div className="flex items-center gap-4">
+                <button 
+                    onClick={() => window.location.hash = '#/profile'}
+                    className="hidden sm:flex items-center gap-3 pl-1 pr-4 py-1 rounded-full bg-[#151F26] border border-white/5 hover:bg-white/5 transition-colors group cursor-pointer"
+                >
+                    <div className="size-8 rounded-full bg-cover bg-center ring-2 ring-white/10 group-hover:ring-[#10b981]/50 transition-all" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAreboopkKSy4YYDs4PFvd-l4xnboU1-dCb6q7kuogZsIpVK9icd7CNdE17iE4uQKdoqiJuI30CTaWxw7GK3QrR7H_FstEqPZBbUqkey_74QXoP8uhTfR9RY780_K4O8UAQpRMWJiKbRdh5-SdE7JAIX5lG3yPPg3Wisf3RGrXHACYJxJFU0vYynDCqaru_FI7DW3EV-buSFuzGK8Z7LP7p7c25u8kqkBUXlt5pQG5d-4WVmAzmNX9U0trABs1cC--zDVlgdRcgww")' }}></div>
+                    <span className="text-sm font-medium text-gray-200">Alex Morgan</span>
+                </button>
+                <button className="relative p-2.5 rounded-full bg-[#151F26] border border-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
+                    <span className="absolute top-2.5 right-3 size-2 bg-red-500 rounded-full border-2 border-[#151F26]"></span>
+                    <span className="material-symbols-outlined text-[20px]">notifications</span>
+                </button>
+            </div>
+        </header>
+
+        {/* Main Content */}
+        <main className="flex-1 w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-10 mt-20 relative z-10">
+          <div className="mb-8">
+             <h1 className="text-3xl font-bold text-white mb-2">Rewards Marketplace</h1>
+             <p className="text-[#94a3b8]">Redeem your Eco Points for exciting rewards.</p>
           </div>
-        </div>
-        <div className="mt-6 md:mt-0 flex gap-4">
-          <button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-6 py-3 rounded-xl font-bold transition-all border border-white/10">
-             History
-          </button>
-          <button className="bg-white text-green-800 px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-gray-100 transition-all">
-             Earn More
-          </button>
-        </div>
-      </div>
 
-      {/* Categories */}
-      <div className="flex gap-4 mb-8 overflow-x-auto pb-2 scrollbar-hide">
-        {['All Rewards', 'Gift Cards', 'Donations', 'Lifestyle', 'Electronics'].map((cat, i) => (
-          <button 
-            key={cat}
-            className={`px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-              i === 0 
-                ? 'bg-primary text-background-dark' 
-                : 'bg-background-card border border-border-dark text-text-secondary hover:text-white hover:border-white/20'
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-         {[
-           { title: '$10 Amazon Gift Card', cost: 1000, icon: 'shopping_cart', color: 'bg-orange-500' },
-           { title: 'Plant 5 Trees', cost: 500, icon: 'forest', color: 'bg-green-600' },
-           { title: '$25 Grocery Voucher', cost: 2400, icon: 'shopping_basket', color: 'bg-blue-500' },
-           { title: 'Cinema Tickets (x2)', cost: 1800, icon: 'movie', color: 'bg-purple-500' },
-           { title: 'Coffee Shop Credit', cost: 800, icon: 'coffee', color: 'bg-amber-700' },
-           { title: 'Donate to Ocean Clean', cost: 1200, icon: 'waves', color: 'bg-cyan-600' },
-           { title: 'EcoCycle Merch Kit', cost: 3000, icon: 'checkroom', color: 'bg-pink-600' },
-           { title: 'Premium App Features', cost: 5000, icon: 'diamond', color: 'bg-indigo-500' },
-         ].map((reward, i) => (
-           <div key={i} className="bg-background-card border border-border-dark rounded-xl overflow-hidden hover:border-primary/50 transition-colors group flex flex-col">
-              <div className={`h-32 ${reward.color} flex items-center justify-center text-white/90`}>
-                 <span className="material-symbols-outlined text-6xl group-hover:scale-110 transition-transform">{reward.icon}</span>
+          {/* Balance Card */}
+          <div className="bg-gradient-to-r from-green-500 to-emerald-700 rounded-2xl p-8 mb-8 text-white flex flex-col md:flex-row justify-between items-center shadow-lg shadow-green-900/20">
+            <div>
+              <h2 className="text-sm font-medium opacity-90 mb-1">Available Balance</h2>
+              <div className="flex items-baseline gap-2">
+                <span className="text-5xl font-black tracking-tight">1,250</span>
+                <span className="text-xl font-medium">Points</span>
               </div>
-              <div className="p-5 flex-1 flex flex-col">
-                 <h3 className="font-bold text-white text-lg mb-1">{reward.title}</h3>
-                 <p className="text-primary font-bold text-sm mb-4">{reward.cost} Points</p>
-                 <button className="w-full mt-auto py-2 rounded-lg bg-white/5 text-white font-medium hover:bg-primary hover:text-background-dark transition-colors border border-white/10 hover:border-transparent">
-                    Redeem
-                 </button>
-              </div>
-           </div>
-         ))}
-      </div>
+            </div>
+            <div className="mt-6 md:mt-0 flex gap-4">
+              <button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-6 py-3 rounded-xl font-bold transition-all border border-white/10 cursor-pointer">
+                 History
+              </button>
+              <button className="bg-white text-green-800 px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-gray-100 transition-all cursor-pointer">
+                 Earn More
+              </button>
+            </div>
+          </div>
 
-      {/* History Table */}
-      <div className="bg-background-card border border-border-dark rounded-xl overflow-hidden">
-        <div className="p-6 border-b border-border-dark">
-          <h3 className="text-lg font-bold text-white">Recent Activity</h3>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm">
-            <thead className="bg-white/5 text-text-secondary">
-              <tr>
-                <th className="px-6 py-4 font-medium">Description</th>
-                <th className="px-6 py-4 font-medium">Date</th>
-                <th className="px-6 py-4 font-medium text-right">Points</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border-dark text-white">
-              {[
-                { desc: 'Recycled Old Laptop', date: 'Oct 24, 2024', points: '+500', type: 'earn' },
-                { desc: 'Redeemed Tree Planting', date: 'Oct 20, 2024', points: '-500', type: 'spend' },
-                { desc: 'Recycled Mobile Phone', date: 'Oct 15, 2024', points: '+250', type: 'earn' },
-              ].map((row, i) => (
-                <tr key={i} className="hover:bg-white/5 transition-colors">
-                  <td className="px-6 py-4">{row.desc}</td>
-                  <td className="px-6 py-4 text-text-secondary">{row.date}</td>
-                  <td className={`px-6 py-4 text-right font-bold ${row.type === 'earn' ? 'text-primary' : 'text-red-400'}`}>
-                    {row.points}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+          {/* Categories */}
+          <div className="flex gap-4 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+            {['All Rewards', 'Gift Cards', 'Donations', 'Lifestyle', 'Electronics'].map((cat, i) => (
+              <button 
+                key={cat}
+                className={`px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors cursor-pointer ${
+                  i === 0 
+                    ? 'bg-[#10b981] text-background-dark' 
+                    : 'bg-[#151F26] border border-white/10 text-[#94a3b8] hover:text-white hover:border-white/20'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+             {[
+               { title: '$10 Amazon Gift Card', cost: 1000, icon: 'shopping_cart', color: 'bg-orange-500' },
+               { title: 'Plant 5 Trees', cost: 500, icon: 'forest', color: 'bg-green-600' },
+               { title: '$25 Grocery Voucher', cost: 2400, icon: 'shopping_basket', color: 'bg-blue-500' },
+               { title: 'Cinema Tickets (x2)', cost: 1800, icon: 'movie', color: 'bg-purple-500' },
+               { title: 'Coffee Shop Credit', cost: 800, icon: 'coffee', color: 'bg-amber-700' },
+               { title: 'Donate to Ocean Clean', cost: 1200, icon: 'waves', color: 'bg-cyan-600' },
+               { title: 'EcoCycle Merch Kit', cost: 3000, icon: 'checkroom', color: 'bg-pink-600' },
+               { title: 'Premium App Features', cost: 5000, icon: 'diamond', color: 'bg-indigo-500' },
+             ].map((reward, i) => (
+               <div key={i} className="bg-[#151F26] border border-white/5 rounded-xl overflow-hidden hover:border-[#10b981]/50 transition-colors group flex flex-col">
+                  <div className={`h-32 ${reward.color} flex items-center justify-center text-white/90`}>
+                     <span className="material-symbols-outlined text-6xl group-hover:scale-110 transition-transform">{reward.icon}</span>
+                  </div>
+                  <div className="p-5 flex-1 flex flex-col">
+                     <h3 className="font-bold text-white text-lg mb-1">{reward.title}</h3>
+                     <p className="text-[#10b981] font-bold text-sm mb-4">{reward.cost} Points</p>
+                     <button className="w-full mt-auto py-2 rounded-lg bg-white/5 text-white font-medium hover:bg-[#10b981] hover:text-background-dark transition-colors border border-white/10 hover:border-transparent cursor-pointer">
+                        Redeem
+                     </button>
+                  </div>
+               </div>
+             ))}
+          </div>
+
+          {/* History Table */}
+          <div className="bg-[#151F26] border border-white/5 rounded-xl overflow-hidden mb-10">
+            <div className="p-6 border-b border-white/5">
+              <h3 className="text-lg font-bold text-white">Recent Activity</h3>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead className="bg-white/5 text-[#94a3b8]">
+                  <tr>
+                    <th className="px-6 py-4 font-medium">Description</th>
+                    <th className="px-6 py-4 font-medium">Date</th>
+                    <th className="px-6 py-4 font-medium text-right">Points</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5 text-white">
+                  {[
+                    { desc: 'Recycled Old Laptop', date: 'Oct 24, 2024', points: '+500', type: 'earn' },
+                    { desc: 'Redeemed Tree Planting', date: 'Oct 20, 2024', points: '-500', type: 'spend' },
+                    { desc: 'Recycled Mobile Phone', date: 'Oct 15, 2024', points: '+250', type: 'earn' },
+                  ].map((row, i) => (
+                    <tr key={i} className="hover:bg-white/5 transition-colors">
+                      <td className="px-6 py-4">{row.desc}</td>
+                      <td className="px-6 py-4 text-[#94a3b8]">{row.date}</td>
+                      <td className={`px-6 py-4 text-right font-bold ${row.type === 'earn' ? 'text-[#10b981]' : 'text-red-400'}`}>
+                        {row.points}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
       </div>
     </Layout>
   );

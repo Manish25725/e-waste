@@ -1,150 +1,191 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Layout from '../components/Layout';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { api, AnalyticsData } from '../services/api';
 
 const AgencyAnalytics = () => {
-  const [data, setData] = useState<AnalyticsData | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadData = async () => {
-        try {
-            const res = await api.getAnalytics();
-            setData(res);
-        } catch (e) {
-            console.error(e);
-        } finally {
-            setLoading(false);
-        }
-    };
-    loadData();
-  }, []);
-
-  if (loading || !data) {
-      return (
-          <Layout title="Agency Analytics Dashboard" subtitle="Key operational metrics for your agency." role="Agency">
-             <div className="flex h-[60vh] items-center justify-center text-text-secondary gap-3">
-                 <span className="material-symbols-outlined animate-spin text-4xl text-primary">progress_activity</span>
-                 <p className="text-lg">Loading analytics...</p>
-             </div>
-          </Layout>
-      );
-  }
-
   return (
-    <Layout title="Agency Analytics Dashboard" subtitle="Key operational metrics for your agency." role="Agency">
-      {/* Date Filter */}
-      <div className="flex justify-end gap-2 mb-8 -mt-14">
-         <button className="px-4 py-2 rounded-lg bg-background-card border border-border-dark text-sm font-medium hover:bg-white/5">Last 7 Days</button>
-         <button className="px-4 py-2 rounded-lg bg-primary text-background-dark text-sm font-bold">Last 30 Days</button>
-         <button className="px-4 py-2 rounded-lg bg-background-card border border-border-dark text-sm font-medium hover:bg-white/5">Year-to-Date</button>
-      </div>
-
-      {/* KPI Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        {data.kpi.map((card, idx) => (
-          <div key={idx} className="bg-background-card border border-border-dark p-6 rounded-xl flex gap-4">
-            <div className="h-12 w-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
-              <span className="material-symbols-outlined text-3xl">{card.icon}</span>
+    <Layout title="" role="Agency">
+      <div className="-mt-8">
+        <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-col gap-1">
+                <h2 className="text-white text-3xl font-bold tracking-tight">Agency Overview</h2>
+                <p className="text-text-secondary">Here's a summary of your recycling operations today.</p>
             </div>
-            <div>
-              <p className="text-sm text-text-secondary font-medium">{card.title}</p>
-              <p className="text-3xl font-bold text-white mt-1">{card.value}</p>
-              <div className={`flex items-center gap-1 text-sm mt-1 ${card.positive ? 'text-green-500' : 'text-red-500'}`}>
-                <span className="material-symbols-outlined text-sm">{card.positive ? 'arrow_upward' : 'arrow_downward'}</span>
-                <span>{card.trend} vs. last month</span>
-              </div>
+            <div className="flex items-center gap-3">
+                <span className="text-sm font-medium text-text-secondary bg-background-card px-3 py-1.5 rounded-lg border border-border-dark">
+                    October 4, 2024
+                 </span>
             </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
-        <div className="lg:col-span-3 bg-background-card border border-border-dark p-6 rounded-xl">
-          <h3 className="text-lg font-semibold text-white mb-1">Collection Trends</h3>
-          <p className="text-sm text-text-secondary mb-6">Amount of e-waste collected over the last 30 days.</p>
-          <div className="h-80 w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={data.charts.trends}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" vertical={false} />
-                <XAxis dataKey="name" stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#1E293B', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
-                  itemStyle={{ color: '#fff' }}
-                />
-                <Line type="monotone" dataKey="value" stroke="#34D399" strokeWidth={3} dot={false} activeDot={{ r: 6, fill: '#34D399' }} />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
         </div>
 
-        <div className="lg:col-span-2 bg-background-card border border-border-dark p-6 rounded-xl flex flex-col">
-          <h3 className="text-lg font-semibold text-white mb-1">E-Waste Breakdown</h3>
-          <p className="text-sm text-text-secondary mb-6">Proportion of different categories.</p>
-          <div className="flex-1 min-h-[250px] relative">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={data.charts.breakdown}
-                  innerRadius={80}
-                  outerRadius={110}
-                  paddingAngle={5}
-                  dataKey="value"
-                >
-                  {data.charts.breakdown.map((entry: any, index: number) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
-                  ))}
-                </Pie>
-                <Tooltip contentStyle={{ backgroundColor: '#1E293B', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }} />
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
-           <div className="flex flex-wrap justify-center gap-3 mt-4">
-              {data.charts.breakdown.map((entry: any) => (
-                  <div key={entry.name} className="flex items-center gap-2 text-xs">
-                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: entry.color}}></div>
-                      <span className="text-text-secondary">{entry.name}</span>
-                  </div>
-              ))}
-          </div>
-        </div>
-      </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* KPI Card 1 */}
+            <div className="bg-background-card border border-border-dark rounded-xl p-6 relative overflow-hidden group hover:border-primary/50 transition-all duration-300">
+                <div className="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <span className="material-symbols-outlined text-[100px] text-primary">calendar_today</span>
+                </div>
+                <div className="relative z-10 flex flex-col h-full justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-primary/20 text-primary">
+                            <span className="material-symbols-outlined">event_available</span>
+                        </div>
+                        <p className="text-sm font-medium text-text-secondary">Slots Available Today</p>
+                    </div>
+                    <div>
+                        <p className="text-4xl font-bold text-white">8</p>
+                        <p className="text-sm text-text-secondary mt-1">
+                            <span className="text-primary font-medium">3 booked</span> so far today
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-      {/* Leaderboard */}
-      <div className="bg-background-card border border-border-dark rounded-xl overflow-hidden">
-        <div className="p-6 border-b border-border-dark">
-          <h3 className="text-lg font-semibold text-white">Agency Performance Leaderboard</h3>
+            {/* KPI Card 2 */}
+            <div className="bg-background-card border border-border-dark rounded-xl p-6 relative overflow-hidden group hover:border-blue-500/50 transition-all duration-300">
+                <div className="absolute right-0 top-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <span className="material-symbols-outlined text-[100px] text-white">book_online</span>
+                </div>
+                <div className="relative z-10 flex flex-col h-full justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-blue-500/20 text-blue-400">
+                            <span className="material-symbols-outlined">book_online</span>
+                        </div>
+                        <p className="text-sm font-medium text-text-secondary">Upcoming Bookings</p>
+                    </div>
+                    <div>
+                        <p className="text-4xl font-bold text-white">24</p>
+                        <p className="text-sm text-text-secondary mt-1">
+                            Scheduled for next 7 days
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {/* KPI Card 3 */}
+            <div className="bg-background-card border border-border-dark rounded-xl p-6 relative overflow-hidden group hover:border-green-500/50 transition-all duration-300">
+                <div className="absolute right-0 top-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <span className="material-symbols-outlined text-[100px] text-white">payments</span>
+                </div>
+                <div className="relative z-10 flex flex-col h-full justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-green-500/20 text-green-400">
+                            <span className="material-symbols-outlined">attach_money</span>
+                        </div>
+                        <p className="text-sm font-medium text-text-secondary">Recent Earnings</p>
+                    </div>
+                    <div>
+                        <p className="text-4xl font-bold text-white">$1,250</p>
+                        <p className="text-sm text-text-secondary mt-1">
+                            <span className="text-green-400 font-medium flex items-center gap-1 inline-flex">
+                                <span className="material-symbols-outlined text-sm">trending_up</span> +12%
+                            </span> 
+                            from last month
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm">
-            <thead className="bg-white/5 text-text-secondary font-medium">
-              <tr>
-                <th className="px-6 py-4">Rank</th>
-                <th className="px-6 py-4">Agency</th>
-                <th className="px-6 py-4">Waste Collected (kg)</th>
-                <th className="px-6 py-4">Completed Bookings</th>
-                <th className="px-6 py-4">Performance Score</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border-dark text-white">
-               {data.leaderboard.map((row) => (
-                 <tr key={row.rank} className={row.active ? 'bg-primary/10' : ''}>
-                   <td className="px-6 py-4 font-medium">{row.rank}</td>
-                   <td className={`px-6 py-4 font-medium ${row.active ? 'text-primary' : ''}`}>{row.name}</td>
-                   <td className="px-6 py-4 text-text-secondary">{row.waste}</td>
-                   <td className="px-6 py-4 text-text-secondary">{row.bookings}</td>
-                   <td className="px-6 py-4">
-                     <div className="w-full bg-white/10 rounded-full h-2">
-                       <div className="bg-primary h-2 rounded-full" style={{ width: `${row.score}%` }}></div>
-                     </div>
-                   </td>
-                 </tr>
-               ))}
-            </tbody>
-          </table>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Recent Activity */}
+            <div className="lg:col-span-2 flex flex-col gap-6">
+                <div className="bg-background-card border border-border-dark rounded-xl flex flex-col">
+                    <div className="p-6 border-b border-border-dark flex justify-between items-center">
+                        <h3 className="text-lg font-bold text-white">Recent Activity</h3>
+                        <button className="text-primary text-sm font-semibold hover:text-primary/80 transition-colors bg-transparent border-none cursor-pointer">View All</button>
+                    </div>
+                    <div className="p-6 flex flex-col gap-4">
+                        <div className="flex items-center justify-between group cursor-pointer p-2 hover:bg-white/5 rounded-lg transition-colors">
+                            <div className="flex items-center gap-4">
+                                <div className="size-10 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+                                    <span className="material-symbols-outlined text-xl">person</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <p className="text-white font-medium text-sm">New booking from Sarah M.</p>
+                                    <p className="text-text-secondary text-xs">Pickup scheduled for Oct 5, 10:00 AM</p>
+                                </div>
+                            </div>
+                            <div className="text-text-secondary text-xs">2m ago</div>
+                        </div>
+                        <div className="h-px bg-border-dark/50 w-full"></div>
+                        <div className="flex items-center justify-between group cursor-pointer p-2 hover:bg-white/5 rounded-lg transition-colors">
+                            <div className="flex items-center gap-4">
+                                <div className="size-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                    <span className="material-symbols-outlined text-xl">check_circle</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <p className="text-white font-medium text-sm">Pickup Completed</p>
+                                    <p className="text-text-secondary text-xs">Order #4291 marked as fulfilled</p>
+                                </div>
+                            </div>
+                            <div className="text-text-secondary text-xs">1h ago</div>
+                        </div>
+                        <div className="h-px bg-border-dark/50 w-full"></div>
+                        <div className="flex items-center justify-between group cursor-pointer p-2 hover:bg-white/5 rounded-lg transition-colors">
+                            <div className="flex items-center gap-4">
+                                <div className="size-10 rounded-full bg-yellow-500/10 text-yellow-400 flex items-center justify-center shrink-0">
+                                    <span className="material-symbols-outlined text-xl">warning</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <p className="text-white font-medium text-sm">Slot Capacity Alert</p>
+                                    <p className="text-text-secondary text-xs">Only 2 slots remaining for Oct 6</p>
+                                </div>
+                            </div>
+                            <div className="text-text-secondary text-xs">3h ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Quick Actions & Eco Tip */}
+            <div className="flex flex-col gap-6">
+                <div className="bg-background-card border border-border-dark rounded-xl p-6">
+                    <h3 className="text-lg font-bold text-white mb-4">Quick Actions</h3>
+                    <div className="flex flex-col gap-3">
+                        <button 
+                            onClick={() => window.location.hash = '#/agency/slots'}
+                            className="flex items-center w-full p-3 rounded-lg bg-background-dark hover:bg-border-dark border border-border-dark transition-all group cursor-pointer"
+                        >
+                            <div className="bg-primary/20 p-2 rounded-md mr-3 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+                                <span className="material-symbols-outlined text-xl">add</span>
+                            </div>
+                            <span className="text-text-primary font-medium text-sm flex-1 text-left">Add New Slot</span>
+                            <span className="material-symbols-outlined text-text-secondary text-sm">chevron_right</span>
+                        </button>
+                        <button 
+                            onClick={() => window.location.hash = '#/agency/slots'}
+                            className="flex items-center w-full p-3 rounded-lg bg-background-dark hover:bg-border-dark border border-border-dark transition-all group cursor-pointer"
+                        >
+                            <div className="bg-blue-500/20 p-2 rounded-md mr-3 text-blue-400 group-hover:bg-blue-400 group-hover:text-background-dark transition-colors">
+                                <span className="material-symbols-outlined text-xl">calendar_month</span>
+                            </div>
+                            <span className="text-text-primary font-medium text-sm flex-1 text-left">View Calendar</span>
+                            <span className="material-symbols-outlined text-text-secondary text-sm">chevron_right</span>
+                        </button>
+                        <button className="flex items-center w-full p-3 rounded-lg bg-background-dark hover:bg-border-dark border border-border-dark transition-all group cursor-pointer">
+                            <div className="bg-purple-500/20 p-2 rounded-md mr-3 text-purple-400 group-hover:bg-purple-400 group-hover:text-background-dark transition-colors">
+                                <span className="material-symbols-outlined text-xl">analytics</span>
+                            </div>
+                            <span className="text-text-primary font-medium text-sm flex-1 text-left">Analytics</span>
+                            <span className="material-symbols-outlined text-text-secondary text-sm">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-primary/20 to-background-card border border-primary/20 rounded-xl p-6 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-4 opacity-10">
+                        <span className="material-symbols-outlined text-6xl text-primary">eco</span>
+                    </div>
+                    <div className="flex items-start gap-4 relative z-10">
+                        <span className="material-symbols-outlined text-primary text-3xl">eco</span>
+                        <div>
+                            <h4 className="text-white font-bold mb-1">Eco Tip</h4>
+                            <p className="text-sm text-text-secondary leading-relaxed">
+                                Optimizing your slot times can reduce vehicle idle time by 15%.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
       </div>
     </Layout>
