@@ -311,7 +311,7 @@ const SchedulePickup = () => {
                 
                 <div className="w-full pt-4 sticky bottom-0 z-10">
                     <button 
-                        onClick={() => window.location.hash = '#/dashboard'}
+                        onClick={() => window.location.hash = '#/pickup-confirmation'}
                         disabled={!selectedSlot}
                         className={`w-full flex min-w-[84px] items-center justify-center overflow-hidden rounded-xl h-14 px-8 text-[#0B1116] text-base font-bold leading-normal tracking-[0.015em] transition-all
                             ${selectedSlot 

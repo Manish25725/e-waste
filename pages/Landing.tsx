@@ -180,6 +180,7 @@ const Landing = () => {
                         <button className="text-slate-400 hover:text-[#34D399] text-sm font-medium transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/how-it-works'}>How It Works</button>
                         <button className="text-slate-400 hover:text-[#34D399] text-sm font-medium transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/search'}>Services</button>
                         <button className="text-slate-400 hover:text-[#34D399] text-sm font-medium transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/about'}>About Us</button>
+                        <button className="text-slate-400 hover:text-[#34D399] text-sm font-medium transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/contact'}>Contact</button>
                     </nav>
                     <div className="flex items-center gap-4">
                         <button 
@@ -418,8 +419,122 @@ const Landing = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Team Section */}
+            <section className="w-full max-w-7xl px-4 py-16 md:px-10">
+                <div className="flex flex-col gap-4 mb-10">
+                    <h2 className="text-3xl font-bold text-white md:text-4xl tracking-tight">Meet the Eco-Warriors</h2>
+                    <p className="text-slate-400 max-w-2xl">The diverse team of environmentalists, engineers, and strategists working behind the scenes.</p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {/* Member 1 */}
+                    <div className="group relative overflow-hidden rounded-2xl bg-[#1E293B] border border-white/5">
+                        <div className="aspect-[4/5] w-full bg-slate-800">
+                            <img alt="Portrait of James Carter, CEO" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGgTCckYVGpYGNvrY1q371qxcBYHMq9K93GTXQiNpiIue3_bOHdHWYWcs8k7zJ8XkVazmiccRBRy7y74-57B4MVAKSvUBd_ZqnYNMKhe9OyGhwjV-S9YEqTOd3Qt_OUjygg8r4fFqRmadxwfH9Z1rffoc7dtlX-ZiaUDPulRVDXrDjMooXPFPigWcCgOnKjHpmtqvxtvnCFMCbfV6lOvWY3DPMTllCZt3mx_rPRVMY6uo-dr4tMOjfq3zhSWXmNcRVbb6Wuf0H5Nk"/>
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent opacity-90"></div>
+                        <div className="absolute bottom-0 p-4 w-full">
+                            <h3 className="text-lg font-bold text-white">James Carter</h3>
+                            <p className="text-[#34D399] text-sm font-medium">Founder & CEO</p>
+                        </div>
+                    </div>
+                    {/* Member 2 */}
+                    <div className="group relative overflow-hidden rounded-2xl bg-[#1E293B] border border-white/5">
+                        <div className="aspect-[4/5] w-full bg-slate-800">
+                            <img alt="Portrait of Sarah Chen, CTO" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5MLRbZQ0gSkFjhap3C6bfnHwXvn4JvuF6ss6f0yWmf4EwIVFc4a3rPSqzhN7i35KYavUxLv2TGbQ0DDUpoORoEIf0nrHu0MIsJGyS9uHCSZjo_oeM1gyEXxKb3fbFOSK8xvcd0hTzp8PCdSZL82ZlgYpnJlIiSTHnnrqMrruJ3jul78QOWK69tU3pOEpU2wx0xkbTtHOh1revLlJYGrGnMtGvDzt0TGWA-JQMemBuevlPYOj-lhisiYpiiGbLA0fafNfQa3Qkrqw"/>
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent opacity-90"></div>
+                        <div className="absolute bottom-0 p-4 w-full">
+                            <h3 className="text-lg font-bold text-white">Sarah Chen</h3>
+                            <p className="text-[#34D399] text-sm font-medium">Chief Technology Officer</p>
+                        </div>
+                    </div>
+                    {/* Member 3 */}
+                    <div className="group relative overflow-hidden rounded-2xl bg-[#1E293B] border border-white/5">
+                        <div className="aspect-[4/5] w-full bg-slate-800">
+                            <img alt="Portrait of Marcus Johnson, Head of Operations" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdzPXX7qiTFwXug2YK1NVDymqMxFHFG24SraLeMywUWNZxFpnYg8U5IvNsP2uKN7dd5-rL5op8jR3-9tSQCbDRWCc4U9u5iK6LnwhpWsKOxsXQdjWKyR6pF6DYjhC5I4UD9oBeau8YEwJpsWlcO6aP7_15fbtbuZ4PYIqgfptR1bWJPMOADu1gm8C2xeQdhoeDmEMVxNMJuL0Oshjckl_zQkjKc6YkwZxVNBf0wENk6wC38wxZcyIjTAUKDXxBZbXlqUWFaU2-eT4"/>
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent opacity-90"></div>
+                        <div className="absolute bottom-0 p-4 w-full">
+                            <h3 className="text-lg font-bold text-white">Marcus Johnson</h3>
+                            <p className="text-[#34D399] text-sm font-medium">Head of Operations</p>
+                        </div>
+                    </div>
+                    {/* Member 4 */}
+                    <div className="group relative overflow-hidden rounded-2xl bg-[#1E293B] border border-white/5">
+                        <div className="aspect-[4/5] w-full bg-slate-800">
+                            <img alt="Portrait of Emily Davis, Sustainability Lead" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3JWfndAXP1p4SeqYC8loBDfme96P8XyUrmKLCJEemRqvfWvZj8IVXtyugQ3RoR7o2OWv9HdoTNAcpBnqu8TVaOJMf1ZyVwCa7u9tsEa1vhSh9fl9nj6RQkPf0xxUzOYXE5zaQDAlnkSF2pM5m0Z3lnE2ziJrrhwe0WQqOV_EbCp_UJRmS1pgLpDKwtYuH0IlSEiCqUrHZ5yout9ILN1ZNBdRCXyveCJWx_3f6tWJMRC8zwzLm1de_8zpBB46uroNK8tKRinB8h1Y"/>
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent opacity-90"></div>
+                        <div className="absolute bottom-0 p-4 w-full">
+                            <h3 className="text-lg font-bold text-white">Emily Davis</h3>
+                            <p className="text-[#34D399] text-sm font-medium">Sustainability Lead</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Contact Us Section */}
+            <section className="w-full max-w-7xl px-4 py-10 md:px-10">
+                <div className="rounded-[2.5rem] bg-gradient-to-r from-[#1E293B] to-[#0B1120] border border-white/5 p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden relative group shadow-2xl">
+                    {/* Decorative background elements */}
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                    <div className="absolute -left-20 -top-20 w-64 h-64 bg-[#34D399]/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-[#34D399]/20 transition-colors duration-700"></div>
+                    
+                    <div className="relative z-10 max-w-2xl">
+                        <div className="flex items-center gap-3 mb-3 text-[#34D399]">
+                            <span className="material-symbols-outlined">support_agent</span>
+                            <span className="text-sm font-bold uppercase tracking-wider">24/7 Support</span>
+                        </div>
+                        <h2 className="text-3xl font-bold text-white mb-3">Questions? We're here to help.</h2>
+                        <p className="text-slate-400 text-lg leading-relaxed">
+                            Whether you need help with a bulk order, partnership details, or just want to say hi, our team is ready to assist you.
+                        </p>
+                    </div>
+                    
+                    <div className="relative z-10 flex flex-col sm:flex-row gap-4 shrink-0 w-full md:w-auto">
+                        <button 
+                            onClick={() => window.location.hash = '#/contact'}
+                            className="h-12 px-8 rounded-full bg-[#34D399] text-[#0B1120] font-bold text-sm shadow-[0_0_20px_rgba(52,211,153,0.3)] hover:bg-[#6EE7B7] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                        >
+                            <span>Contact Us</span>
+                            <span className="material-symbols-outlined text-lg">mail</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="w-full px-4 py-20">
+                <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl bg-[#34D399] relative shadow-[0_0_40px_rgba(52,211,153,0.15)]">
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+                    <div className="relative flex flex-col items-center gap-6 px-4 py-16 text-center md:px-20">
+                        <h2 className="text-3xl font-black text-[#0B1120] md:text-5xl max-w-2xl tracking-tight">
+                            Ready to make a difference?
+                        </h2>
+                        <p className="max-w-xl text-lg font-medium text-[#0B1120]/80">
+                            Join thousands of eco-conscious individuals and businesses. Schedule your first pickup today.
+                        </p>
+                        <div className="flex flex-col gap-3 sm:flex-row">
+                            <button 
+                                onClick={() => window.location.hash = '#/search'}
+                                className="flex h-12 min-w-[160px] cursor-pointer items-center justify-center rounded-full bg-[#0B1120] px-6 text-white text-base font-bold transition-transform hover:scale-105"
+                            >
+                                Book Pickup
+                            </button>
+                            <button 
+                                onClick={() => window.location.hash = '#/contact'}
+                                className="flex h-12 min-w-[160px] cursor-pointer items-center justify-center rounded-full border-2 border-[#0B1120] px-6 text-[#0B1120] text-base font-bold transition-colors hover:bg-[#0B1120]/10"
+                            >
+                                Contact Sales
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
+        {/* Footer */}
         <footer className="w-full border-t border-white/5 bg-[#0B1120] pt-16 pb-8 relative z-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -427,7 +542,7 @@ const Landing = () => {
                         <div className="flex items-center gap-2 mb-4 cursor-pointer" onClick={() => window.location.hash = '#/'}>
                             <div className="size-6 text-[#34D399] flex items-center justify-center">
                                 <svg className="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9038 7.27094 44 7.27094 44L42.4379 44Z" stroke="currentColor" strokeWidth="3"></path>
+                                    <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" stroke="currentColor" strokeWidth="3"></path>
                                 </svg>
                             </div>
                             <span className="text-white text-lg font-bold">EcoCycle</span>

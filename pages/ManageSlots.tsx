@@ -50,9 +50,9 @@ const ManageSlots = () => {
           <div className="flex flex-wrap justify-between gap-4 mb-6">
             <div className="flex flex-col gap-1">
               <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Manage Slots</h1>
-              <p className="text-text-secondary text-base font-normal leading-normal">Select a date to view and manage pickup time slots.</p>
+              <p className="text-slate-400 text-base font-normal leading-normal">Select a date to view and manage pickup time slots.</p>
             </div>
-            <button className="flex items-center justify-center h-12 px-6 text-base font-bold leading-normal tracking-[0.015em] transition-all bg-primary text-background-dark rounded-lg min-w-[84px] max-w-[480px] hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/20 transform hover:-translate-y-0.5">
+            <button className="flex items-center justify-center h-12 px-6 text-base font-bold leading-normal transition-all bg-[#34D399] text-[#0B1120] rounded-full min-w-[84px] max-w-[480px] hover:bg-[#6EE7B7] hover:scale-105 shadow-[0_0_15px_rgba(52,211,153,0.3)]">
               <span className="material-symbols-outlined mr-2">add</span>
               <span className="truncate">Add New Slot</span>
             </button>
@@ -60,9 +60,9 @@ const ManageSlots = () => {
 
           {/* View Controls */}
           <div className="flex px-0 py-3 mb-4 items-center justify-between gap-4">
-            <div className="flex h-10 w-full md:w-auto items-center justify-center rounded-lg bg-background-card border border-border-dark p-1">
+            <div className="flex h-10 w-full md:w-auto items-center justify-center rounded-lg bg-[#1E293B] border border-white/5 p-1">
               {['Month', 'Week', 'Day'].map((v) => (
-                <label key={v} className={`flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-4 text-sm font-medium leading-normal transition-all ${view === v ? 'bg-background-dark text-white shadow-sm' : 'text-text-secondary hover:text-white'}`}>
+                <label key={v} className={`flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-4 text-sm font-medium leading-normal transition-all ${view === v ? 'bg-[#0B1120] text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}>
                   <span className="truncate">{v}</span>
                   <input 
                     type="radio" 
@@ -75,22 +75,22 @@ const ManageSlots = () => {
                 </label>
               ))}
             </div>
-            <button className="flex items-center justify-center h-10 px-4 text-sm font-medium leading-normal transition-colors bg-primary text-background-dark rounded-lg min-w-[84px] hover:bg-primary-hover">
-              <span className="material-symbols-outlined mr-2 fill">today</span>
+            <button className="flex items-center justify-center h-10 px-4 text-sm font-medium leading-normal transition-colors bg-[#34D399] text-[#0B1120] rounded-lg min-w-[84px] hover:bg-[#6EE7B7]">
+              <span className="material-symbols-outlined mr-2 fill text-lg">today</span>
               <span className="truncate">Today's Slots</span>
             </button>
           </div>
 
           {/* Calendar Grid */}
-          <div className="p-4 bg-background-card border border-border-dark rounded-xl">
+          <div className="p-4 bg-[#1E293B] border border-white/5 rounded-2xl shadow-xl">
             <div className="flex flex-col w-full">
               {/* Calendar Nav */}
               <div className="flex items-center justify-between p-1 mb-2">
-                <button className="flex items-center justify-center text-text-primary size-10 rounded-full hover:bg-white/5 transition-colors">
+                <button className="flex items-center justify-center text-slate-300 size-10 rounded-full hover:bg-white/5 transition-colors">
                   <span className="material-symbols-outlined">chevron_left</span>
                 </button>
                 <p className="text-white text-lg font-bold leading-tight flex-1 text-center">October 2024</p>
-                <button className="flex items-center justify-center text-text-primary size-10 rounded-full hover:bg-white/5 transition-colors">
+                <button className="flex items-center justify-center text-slate-300 size-10 rounded-full hover:bg-white/5 transition-colors">
                   <span className="material-symbols-outlined">chevron_right</span>
                 </button>
               </div>
@@ -98,7 +98,7 @@ const ManageSlots = () => {
               {/* Days Header */}
               <div className="grid grid-cols-7 gap-1">
                 {weekDays.map(d => (
-                  <p key={d} className="flex items-center justify-center h-12 text-[13px] font-bold tracking-[0.015em] text-text-secondary">{d}</p>
+                  <p key={d} className="flex items-center justify-center h-12 text-[13px] font-bold tracking-[0.015em] text-slate-500">{d}</p>
                 ))}
 
                 {/* Date Cells */}
@@ -111,17 +111,17 @@ const ManageSlots = () => {
                     <div key={day} className={cellClass}>
                       <button 
                         onClick={() => setSelectedDate(day)}
-                        className={`relative flex flex-col justify-start items-center w-full h-24 text-sm font-medium leading-normal rounded-lg p-2 transition-all duration-200
+                        className={`relative flex flex-col justify-start items-center w-full h-24 text-sm font-medium leading-normal rounded-xl p-2 transition-all duration-200
                           ${selected 
-                            ? 'bg-primary/20 text-white border-2 border-primary ring-4 ring-primary/20' 
-                            : 'bg-background-dark text-text-primary hover:bg-white/5'
+                            ? 'bg-[#34D399]/10 text-white border-2 border-[#34D399]' 
+                            : 'bg-[#0B1120] border border-white/5 text-slate-300 hover:bg-[#252f3f]'
                           }
                         `}
                       >
-                        <span className="font-semibold">{day}</span>
+                        <span className={`font-semibold ${selected ? 'text-[#34D399]' : ''}`}>{day}</span>
                         {/* Indicators from API */}
                         {indicator?.hasAvailable && (
-                           <div className="w-1.5 h-1.5 bg-green-400 rounded-full mt-1.5 shadow-[0_0_8px_rgba(74,222,128,0.5)]" title="Slots Available"></div>
+                           <div className="w-1.5 h-1.5 bg-[#34D399] rounded-full mt-1.5 shadow-[0_0_8px_rgba(52,211,153,0.5)]" title="Slots Available"></div>
                         )}
                         {indicator?.hasBooked && (
                            <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 shadow-[0_0_8px_rgba(96,165,250,0.5)]" title="Fully Booked"></div>
@@ -133,12 +133,12 @@ const ManageSlots = () => {
 
                 {/* Next month placeholders */}
                 <div className="p-1">
-                  <button className="relative flex flex-col justify-start items-center w-full h-24 text-text-secondary/30 text-sm font-medium leading-normal bg-background-dark/30 rounded-lg p-2 cursor-default">
+                  <button className="relative flex flex-col justify-start items-center w-full h-24 text-slate-700 text-sm font-medium leading-normal bg-[#0B1120]/50 rounded-xl p-2 cursor-default">
                     <span className="font-semibold">1</span>
                   </button>
                 </div>
                 <div className="p-1">
-                  <button className="relative flex flex-col justify-start items-center w-full h-24 text-text-secondary/30 text-sm font-medium leading-normal bg-background-dark/30 rounded-lg p-2 cursor-default">
+                  <button className="relative flex flex-col justify-start items-center w-full h-24 text-slate-700 text-sm font-medium leading-normal bg-[#0B1120]/50 rounded-xl p-2 cursor-default">
                     <span className="font-semibold">2</span>
                   </button>
                 </div>
@@ -148,19 +148,19 @@ const ManageSlots = () => {
         </div>
 
         {/* Right Side: Schedule Panel */}
-        <div className="w-full lg:flex-1 bg-background-card border border-border-dark rounded-xl p-6 self-start lg:sticky lg:top-6 min-h-[500px]">
-          <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-4 border-b border-border-dark">
+        <div className="w-full lg:flex-1 bg-[#1E293B] border border-white/5 rounded-2xl p-6 self-start lg:sticky lg:top-6 min-h-[500px] shadow-xl">
+          <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-4 border-b border-white/5">
             Schedule for Oct {selectedDate}, 2024
           </h2>
           <div className="mt-6 flex flex-col gap-4">
             
             {loading ? (
-                <div className="flex flex-col items-center justify-center py-12 gap-3 text-text-secondary">
-                    <span className="material-symbols-outlined animate-spin text-3xl text-primary">progress_activity</span>
+                <div className="flex flex-col items-center justify-center py-12 gap-3 text-slate-500">
+                    <span className="material-symbols-outlined animate-spin text-3xl text-[#34D399]">progress_activity</span>
                     <p>Loading slots...</p>
                 </div>
             ) : slots.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-12 gap-3 text-text-secondary border-2 border-dashed border-border-dark rounded-xl">
+                <div className="flex flex-col items-center justify-center py-12 gap-3 text-slate-500 border-2 border-dashed border-white/10 rounded-xl">
                     <span className="material-symbols-outlined text-4xl opacity-50">event_busy</span>
                     <p>No slots configured for this date.</p>
                 </div>
@@ -168,24 +168,24 @@ const ManageSlots = () => {
                 slots.map(slot => (
                     <div 
                         key={slot.id} 
-                        className={`flex items-center justify-between p-4 rounded-lg border transition-colors group
-                            ${slot.status === 'Available' ? 'bg-green-500/10 border-green-500/20 hover:border-green-500/40' : ''}
-                            ${slot.status === 'Booked' ? 'bg-blue-500/10 border-blue-500/20 hover:border-blue-500/40' : ''}
-                            ${slot.status === 'Unavailable' ? 'bg-background-dark/50 border-border-dark' : ''}
+                        className={`flex items-center justify-between p-4 rounded-xl border transition-colors group
+                            ${slot.status === 'Available' ? 'bg-[#34D399]/5 border-[#34D399]/10 hover:border-[#34D399]/30' : ''}
+                            ${slot.status === 'Booked' ? 'bg-blue-500/5 border-blue-500/10 hover:border-blue-500/30' : ''}
+                            ${slot.status === 'Unavailable' ? 'bg-[#0B1120]/50 border-white/5' : ''}
                         `}
                     >
                         <div className="flex items-center gap-4">
-                            <div className={`w-2 h-10 rounded-full shadow-[0_0_12px_rgba(0,0,0,0.2)]
-                                ${slot.status === 'Available' ? 'bg-green-400' : ''}
+                            <div className={`w-1.5 h-10 rounded-full
+                                ${slot.status === 'Available' ? 'bg-[#34D399]' : ''}
                                 ${slot.status === 'Booked' ? 'bg-blue-400' : ''}
-                                ${slot.status === 'Unavailable' ? 'bg-text-secondary' : ''}
+                                ${slot.status === 'Unavailable' ? 'bg-slate-700' : ''}
                             `}></div>
                             <div className="flex flex-col">
                                 <p className="text-base font-bold text-white">{slot.startTime} - {slot.endTime}</p>
                                 <p className={`text-sm font-medium
-                                    ${slot.status === 'Available' ? 'text-green-300' : ''}
-                                    ${slot.status === 'Booked' ? 'text-blue-300' : ''}
-                                    ${slot.status === 'Unavailable' ? 'text-text-secondary' : ''}
+                                    ${slot.status === 'Available' ? 'text-[#34D399]' : ''}
+                                    ${slot.status === 'Booked' ? 'text-blue-400' : ''}
+                                    ${slot.status === 'Unavailable' ? 'text-slate-500' : ''}
                                 `}>
                                     {slot.status === 'Booked' ? `Booked - ${slot.bookedBy}` : slot.status}
                                 </p>
@@ -193,17 +193,17 @@ const ManageSlots = () => {
                         </div>
                         <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                             {slot.status === 'Booked' ? (
-                                <button className="text-text-secondary hover:text-white transition-colors">
+                                <button className="text-slate-400 hover:text-white transition-colors">
                                     <span className="material-symbols-outlined">visibility</span>
                                 </button>
                             ) : (
                                 <>
-                                    <button className="text-text-secondary hover:text-white transition-colors">
+                                    <button className="text-slate-400 hover:text-white transition-colors">
                                         <span className="material-symbols-outlined">edit</span>
                                     </button>
                                     <button 
                                         onClick={() => handleDelete(slot.id)}
-                                        className="text-text-secondary hover:text-red-400 transition-colors"
+                                        className="text-slate-400 hover:text-red-400 transition-colors"
                                     >
                                         <span className="material-symbols-outlined">delete</span>
                                     </button>

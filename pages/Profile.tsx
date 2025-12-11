@@ -67,15 +67,24 @@ const Profile = () => {
                         <span className="material-symbols-outlined fill text-[20px]">person</span>
                         <p className="text-sm font-medium leading-normal">Profile Information</p>
                     </button>
-                    <button className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-[#94a3b8] hover:text-white transition-colors w-full text-left cursor-pointer">
+                    <button 
+                        onClick={() => window.location.hash = '#/notifications'}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-[#94a3b8] hover:text-white transition-colors w-full text-left cursor-pointer"
+                    >
                         <span className="material-symbols-outlined text-[20px]">notifications</span>
                         <p className="text-sm font-medium leading-normal">Notifications</p>
                     </button>
-                    <button className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-[#94a3b8] hover:text-white transition-colors w-full text-left cursor-pointer">
+                    <button 
+                        onClick={() => window.location.hash = '#/security'}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-[#94a3b8] hover:text-white transition-colors w-full text-left cursor-pointer"
+                    >
                         <span className="material-symbols-outlined text-[20px]">lock</span>
                         <p className="text-sm font-medium leading-normal">Security & Privacy</p>
                     </button>
-                    <button className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-[#94a3b8] hover:text-white transition-colors w-full text-left cursor-pointer">
+                    <button 
+                        onClick={() => window.location.hash = '#/settings'}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-[#94a3b8] hover:text-white transition-colors w-full text-left cursor-pointer"
+                    >
                         <span className="material-symbols-outlined text-[20px]">settings</span>
                         <p className="text-sm font-medium leading-normal">App Settings</p>
                     </button>

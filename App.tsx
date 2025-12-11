@@ -15,9 +15,38 @@ import HowItWorks from './pages/HowItWorks';
 import AboutUs from './pages/AboutUs';
 import Profile from './pages/Profile';
 import Rewards from './pages/Rewards';
+import Notifications from './pages/Notifications';
+import Security from './pages/Security';
+import AppSettings from './pages/AppSettings';
+import AdminVetting from './pages/AdminVetting';
+import AdminUsers from './pages/AdminUsers';
+import AdminAgencies from './pages/AdminAgencies';
+import AdminReports from './pages/AdminReports';
+import PickupConfirmation from './pages/PickupConfirmation';
+import LoadingScreen from './components/LoadingScreen';
 
 const App = () => {
   const [route, setRoute] = useState(window.location.hash || '#/');
+  const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    // Initial Loading Simulation
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setTimeout(() => setIsLoading(false), 500); // Slight delay at 100%
+          return 100;
+        }
+        // Random increment for realism
+        const increment = Math.floor(Math.random() * 5) + 1; 
+        return Math.min(prev + increment, 100);
+      });
+    }, 50); // Updates every 50ms
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -49,8 +78,18 @@ const App = () => {
         return <SearchAgencies />;
       case '#/schedule':
         return <SchedulePickup />;
+      case '#/pickup-confirmation':
+        return <PickupConfirmation />;
       case '#/admin':
         return <AdminDashboard />;
+      case '#/admin/vetting':
+        return <AdminVetting />;
+      case '#/admin/users':
+        return <AdminUsers />;
+      case '#/admin/agencies':
+        return <AdminAgencies />;
+      case '#/admin/reports':
+        return <AdminReports />;
       case '#/login':
         return <Login />;
       case '#/contact':
@@ -61,11 +100,21 @@ const App = () => {
         return <AboutUs />;
       case '#/profile':
         return <Profile />;
+      case '#/notifications':
+        return <Notifications />;
+      case '#/security':
+        return <Security />;
+      case '#/settings':
+        return <AppSettings />;
       case '#/':
       default:
         return <Landing />;
     }
   };
+
+  if (isLoading) {
+    return <LoadingScreen progress={progress} />;
+  }
 
   return (
     <>

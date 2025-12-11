@@ -2,98 +2,79 @@ import React from 'react';
 
 const ContactUs = () => {
   return (
-    <div className="relative flex h-auto min-h-screen w-full flex-col bg-background-dark text-text-primary group/design-root overflow-x-hidden font-sans">
+    <div className="relative flex h-auto min-h-screen w-full flex-col bg-[#0B1120] text-slate-300 font-sans group/design-root overflow-x-hidden selection:bg-[#34D399] selection:text-[#0B1120]">
       <div className="layout-container flex h-full grow flex-col">
-        <header className="flex items-center justify-between whitespace-nowrap border-b border-border-dark px-10 py-3 lg:px-40 bg-background-dark/95 backdrop-blur-md sticky top-0 z-50">
-          <div className="flex items-center gap-4 text-white cursor-pointer" onClick={() => window.location.hash = '#/'}>
-            <div className="size-6 text-primary">
-              <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
-              </svg>
+        {/* Header - Logo Only */}
+        <header className="sticky top-0 z-50 flex items-center justify-center border-b border-white/5 bg-[#0B1120]/80 backdrop-blur-md px-6 py-4">
+            <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.location.hash = '#/'}>
+                <div className="size-8 text-[#34D399] flex items-center justify-center">
+                    <svg className="w-full h-full drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"></path>
+                    </svg>
+                </div>
+                <h2 className="text-white text-xl font-black tracking-tight">EcoCycle</h2>
             </div>
-            <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">EcoCycle</h2>
-          </div>
-          <div className="hidden items-center gap-9 lg:flex">
-            <button className="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/'}>Home</button>
-            <button className="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/search'}>Book a Pickup</button>
-            <button className="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/how-it-works'}>How It Works</button>
-            <button className="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/about'}>About Us</button>
-            <button className="text-primary text-sm font-medium leading-normal bg-transparent border-none cursor-pointer" onClick={() => window.location.hash = '#/contact'}>Contact Us</button>
-          </div>
-          <div className="flex items-center gap-4">
-            <button 
-              onClick={() => window.location.hash = '#/dashboard'}
-              className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary-hover transition-colors"
-            >
-              <span className="truncate">My Account</span>
-            </button>
-            <div 
-              className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 cursor-pointer" 
-              data-alt="User profile picture" 
-              style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBhkQ64gF-9XVavLPD4D6bNcTYpvk9DjvQS-bd3GNuhwI-63DtSWRLHDCilS868YmH0uqoFO4MMvM30WkHLxW4NNfhQ-m77uLiqhRkgX23Hl1Skst-pDhd1d0zOuW6Kf8MWYDW64jv_8aT5ykIOvVb6E-XTqIlULwtm_CTXvCkMTlOFhfFuauy70ml3OpU0nrrMxk8cyzyj3JIxjPGvF4EOXncVrkAMUqZqLyJV5L2WHrZiMV0bcgLD0smjh2leI_CyfSrjP3bWgg")' }}
-              onClick={() => window.location.hash = '#/profile'}
-            ></div>
-          </div>
         </header>
-        <main className="flex-1 px-4 py-10 sm:px-10 lg:px-40 lg:py-20 bg-background-dark">
+
+        <main className="flex-1 px-4 py-10 sm:px-10 lg:px-40 lg:py-20">
           <div className="mx-auto flex max-w-[960px] flex-col gap-10">
             <div className="flex min-w-72 flex-col gap-3">
-              <p className="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl">Get in Touch</p>
-              <p className="text-text-secondary text-base font-normal leading-normal md:text-lg">Have a question or need assistance? We're here to help.</p>
+              <p className="text-white text-4xl font-black leading-tight tracking-tight md:text-5xl">Get in Touch</p>
+              <p className="text-slate-400 text-base font-normal leading-normal md:text-lg">Have a question or need assistance? We're here to help.</p>
             </div>
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
               <div className="flex flex-col gap-8 lg:col-span-3">
-                <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Send us a Message</h2>
+                <h2 className="text-white text-[22px] font-bold leading-tight tracking-tight">Send us a Message</h2>
                 <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <label className="flex flex-col flex-1">
-                      <p className="text-white text-base font-medium leading-normal pb-2">Full Name</p>
-                      <input className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-dark bg-background-card focus:border-primary h-14 placeholder:text-text-secondary p-[15px] text-base font-normal leading-normal transition-all" placeholder="Enter your full name" type="text" />
+                      <p className="text-slate-300 text-base font-medium leading-normal pb-2">Full Name</p>
+                      <input className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-none focus:ring-1 focus:ring-[#34D399] border border-white/10 bg-[#1E293B]/50 h-14 placeholder:text-slate-500 p-[15px] text-base font-normal leading-normal transition-all" placeholder="Enter your full name" type="text" />
                     </label>
                     <label className="flex flex-col flex-1">
-                      <p className="text-white text-base font-medium leading-normal pb-2">Email Address</p>
-                      <input className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-dark bg-background-card focus:border-primary h-14 placeholder:text-text-secondary p-[15px] text-base font-normal leading-normal transition-all" placeholder="Enter your email address" type="email" />
+                      <p className="text-slate-300 text-base font-medium leading-normal pb-2">Email Address</p>
+                      <input className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-none focus:ring-1 focus:ring-[#34D399] border border-white/10 bg-[#1E293B]/50 h-14 placeholder:text-slate-500 p-[15px] text-base font-normal leading-normal transition-all" placeholder="Enter your email address" type="email" />
                     </label>
                   </div>
                   <label className="flex flex-col">
-                    <p className="text-white text-base font-medium leading-normal pb-2">Subject</p>
-                    <input className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-dark bg-background-card focus:border-primary h-14 placeholder:text-text-secondary p-[15px] text-base font-normal leading-normal transition-all" placeholder="Enter the subject of your message" type="text" />
+                    <p className="text-slate-300 text-base font-medium leading-normal pb-2">Subject</p>
+                    <input className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-none focus:ring-1 focus:ring-[#34D399] border border-white/10 bg-[#1E293B]/50 h-14 placeholder:text-slate-500 p-[15px] text-base font-normal leading-normal transition-all" placeholder="Enter the subject of your message" type="text" />
                   </label>
                   <label className="flex flex-col">
-                    <p className="text-white text-base font-medium leading-normal pb-2">Your Message</p>
-                    <textarea className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-dark bg-background-card focus:border-primary placeholder:text-text-secondary p-[15px] text-base font-normal leading-normal transition-all" placeholder="Type your message here..." rows={6}></textarea>
+                    <p className="text-slate-300 text-base font-medium leading-normal pb-2">Your Message</p>
+                    <textarea className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-none focus:ring-1 focus:ring-[#34D399] border border-white/10 bg-[#1E293B]/50 placeholder:text-slate-500 p-[15px] text-base font-normal leading-normal transition-all" placeholder="Type your message here..." rows={6}></textarea>
                   </label>
-                  <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-background-dark text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary-hover transition-colors w-full sm:w-auto">
+                  <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 bg-[#34D399] text-[#0B1120] text-base font-bold leading-normal tracking-[0.015em] hover:bg-[#6EE7B7] shadow-[0_0_15px_rgba(52,211,153,0.3)] transition-all transform hover:scale-105 w-full sm:w-auto">
                     <span className="truncate">Send Message</span>
                   </button>
                 </form>
               </div>
               <div className="flex flex-col gap-8 lg:col-span-2">
-                <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Other Ways to Reach Us</h2>
+                <h2 className="text-white text-[22px] font-bold leading-tight tracking-tight">Other Ways to Reach Us</h2>
                 <div className="flex flex-col gap-6">
                   <a className="group flex items-center gap-4" href="mailto:support@ecocycle.com">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/5 group-hover:bg-primary/20 transition-colors">
-                      <span className="material-symbols-outlined text-primary text-2xl">mail</span>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1E293B]/50 border border-white/10 group-hover:border-[#34D399]/50 transition-colors">
+                      <span className="material-symbols-outlined text-[#34D399] text-2xl">mail</span>
                     </div>
                     <div className="flex flex-col">
-                      <p className="text-text-secondary text-sm">Email Us</p>
-                      <p className="text-white font-medium">support@ecocycle.com</p>
+                      <p className="text-slate-500 text-sm uppercase tracking-wider font-bold">Email Us</p>
+                      <p className="text-white font-medium group-hover:text-[#34D399] transition-colors">support@ecocycle.com</p>
                     </div>
                   </a>
                   <a className="group flex items-center gap-4" href="tel:+1800555ECYC">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/5 group-hover:bg-primary/20 transition-colors">
-                      <span className="material-symbols-outlined text-primary text-2xl">call</span>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1E293B]/50 border border-white/10 group-hover:border-[#34D399]/50 transition-colors">
+                      <span className="material-symbols-outlined text-[#34D399] text-2xl">call</span>
                     </div>
                     <div className="flex flex-col">
-                      <p className="text-text-secondary text-sm">Call Us</p>
-                      <p className="text-white font-medium">+1 (800) 555-ECYC</p>
+                      <p className="text-slate-500 text-sm uppercase tracking-wider font-bold">Call Us</p>
+                      <p className="text-white font-medium group-hover:text-[#34D399] transition-colors">+1 (800) 555-ECYC</p>
                     </div>
                   </a>
                 </div>
-                <div className="mt-4 rounded-xl border border-border-dark bg-background-card p-6">
+                <div className="mt-4 rounded-3xl border border-white/5 bg-[#1E293B]/50 p-8">
                   <h3 className="text-white font-bold text-lg">Frequently Asked Questions</h3>
-                  <p className="text-text-secondary mt-2 text-sm">Looking for quick answers? Our FAQ section covers a wide range of topics to help you get the information you need, fast.</p>
-                  <a className="group mt-4 inline-flex items-center gap-2 text-primary font-bold text-sm" href="#">
+                  <p className="text-slate-400 mt-2 text-sm leading-relaxed">Looking for quick answers? Our FAQ section covers a wide range of topics to help you get the information you need, fast.</p>
+                  <a className="group mt-6 inline-flex items-center gap-2 text-[#34D399] font-bold text-sm hover:underline" href="#">
                     <span>Check out our FAQs</span>
                     <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
                   </a>
